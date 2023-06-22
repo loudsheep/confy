@@ -1,8 +1,4 @@
-# Sprzatando 🧹
-
-Platforma łącząca ludzi posiadający srogie hacjendy z ludźmi mającymi ręce i minimum zdolności manualnych, żeby posprzątać.
-
-Sprzątando is a school project that connects people who need cleaning services with those who can provide them. The project aims to improve group work skills by providing students with a real-world problem to solve.
+# Confab 🧹
 
 -------
 ## Installation 💻
@@ -70,15 +66,8 @@ Navigate to http://localhost:8000 in your web browser to view the application. �
 
 ## Tech Stack 🛠️
 
-**Client:** React, Inertia.js, styled-components, MUI ⚛️💅
+**Client:** React, Inertia.js ⚛️💅
 
 **Server:** PHP, Laravel, MySQL 🐘🔥
 
 -------
-
-## Authors 👥
-
-- [@Enigmo13](https://github.com/Enigmo13)
-- [@Kuzdra24](https://github.com/Kuzdra24)
-- [@loudsheep](https://www.github.com/loudsheep)
-- [@zandalJ](https://github.com/zandalJ)

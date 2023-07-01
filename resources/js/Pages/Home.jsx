@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import '../../sass/_tokens.scss';
+import Logo from '../components/Logo.jsx';
+import '../../sass/main.scss';
 
 const Home = () => {
     return (
-        <h1>This is test component</h1>
+        <div>
+            <Logo></Logo>
+            <h1>This is test component</h1>
+        </div>
     )
 }
 

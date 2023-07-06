@@ -1,0 +1,8 @@
+.profile-picture {
+    --width: 40px;
+
+    width: var(--width);
+    aspect-ratio: 1 / 1;
+
+    border-radius: 50%;
+}

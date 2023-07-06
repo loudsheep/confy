@@ -1,0 +1,19 @@
+.profile-settings div {
+    width: 100%;
+    gap: var(--size-500);
+
+    color: var(--clr-neutral-900);
+    font-weight: var(--fw-semibold);
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.icon {
+    width: 40px;
+    aspect-ratio: 1 / 1;
+
+    outline: 1px solid red;
+}

@@ -1,0 +1,29 @@
+$breakpoints: (
+    'sm': 425px,
+    'md': 768px,
+    'lg': 1024px
+);
+
+$base-size: 1rem;
+
+$sizes: (
+    '100':$base-size * 0.125, 
+    '200':$base-size * 0.25, 
+    '300':$base-size * 0.5,
+    '400':$base-size * 0.75,
+    '500':$base-size * 1,
+    '600':$base-size * 1.5,
+    '700':$base-size * 1.75,
+    '800':$base-size * 2,
+    '900':$base-size * 4
+);
+
+:root {
+    @each $size, $value in $sizes {
+        --size-#{$size}: #{$value};
+    }
+
+    @each $breakpoint, $value in $breakpoints {
+        --br-#{$breakpoint}: #{$value};
+    }
+}

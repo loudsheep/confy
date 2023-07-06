@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import logo from '../../assets/logo.svg'
 
 const Logo = () => {
     return (
-        <a href="/"><img src={logo} alt="Confy"/></a>
+        <div>
+            <a href="/"><img src={logo} alt="Confy"/></a>
+        </div>
     )
 }
 

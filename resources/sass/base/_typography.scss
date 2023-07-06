@@ -1,0 +1,47 @@
+$ff-primary: 'Inter';
+
+$base-size: 1rem;
+
+$font-sizes: (
+    '100' : $base-size * 0.625,
+    '300' : $base-size * 0.75,
+    '400' : $base-size * 0.825,
+    '500' : $base-size * 1,
+    '700' : $base-size * 1.25,
+);
+
+$font-weights: (
+    'light' : 300,
+    'regular' : 400,
+    'medium' : 500,
+    'semibold' : 600,
+    'bold' : 700
+);
+
+:root {
+    @each $weight, $value in $font-weights {
+        --fw-#{$weight}: #{$value};
+    }
+
+    @each $size, $value in $font-sizes {
+        --fs-#{$size}: #{$value};
+    }
+}
+
+@each $weight, $value in $font-weights {
+
+    .fw-#{$weight} {
+        font-weight: $value;
+    }
+}
+
+@each $size, $value in $font-sizes {
+
+    .fs-#{$size} {
+        font-size: $value;
+    }
+}
+
+body {
+    font-family: #{$ff-primary} !important;
+}

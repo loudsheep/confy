@@ -1,19 +1,49 @@
-.profile-settings div {
-    width: 100%;
-    gap: var(--size-500);
-
-    color: var(--clr-neutral-900);
-    font-weight: var(--fw-semibold);
+.profile-settings {
+    max-width: 300px;
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: var(--size-500);
 
-    align-items: center;
+    button,div {
+        width: 100%;
+        gap: var(--size-500);
+
+        color: var(--clr-neutral-900);
+        font-weight: var(--fw-semibold);
+
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+    }
+}
+
+.profile {
+    position: relative;
+
+    .expand-down {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        width: var(--size-400);
+        aspect-ratio: 1 / 1;
+
+        .icon {
+            width: inherit;
+            aspect-ratio: 1 / 1;
+        }
+        
+    }
+
 }
 
 .icon {
     width: 40px;
     aspect-ratio: 1 / 1;
 
-    outline: 1px solid red;
+    fill: none;
+
+    --icon-color: var(--clr-neutral-900);
 }

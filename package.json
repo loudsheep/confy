@@ -20,6 +20,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "sass": "^1.63.6"
+        "sass": "^1.63.6",
+        "svg4everybody": "^2.1.9"
     }
 }

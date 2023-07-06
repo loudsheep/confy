@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-//icons
-import icons from "../../assets/icons.svg";
+import Icon from "../components/Icon";
 
 const Menus = () => {
 
@@ -20,15 +19,13 @@ const Menus = () => {
 
     return (
         <div>
-            <button onClick={onClickNotifications}>
-                <svg className="icon">
-                    <use xlinkHref={icons + "#Bell"}></use>
-                </svg>
+            <button className="notifications" onClick={onClickNotifications}>
+                <Icon name="Bell"></Icon>
             </button>
-            <button onClick={onClickProfile}>
+            <button className="profile" onClick={onClickProfile}>
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <div>
-
+                <div className="expand-down">
+                    <Icon name="Expand_down"></Icon>
                 </div>
             </button>
             <div>
@@ -46,8 +43,10 @@ const Notifications = () => {
                 <h1 className="fw-bold">Notifications</h1>
                 <div>
                     <button>
+                        <Icon name="Filter_alt"></Icon>
                     </button>
                     <button>
+                        <Icon name="Meatballs_menu"></Icon>
                     </button>
                 </div>
             </div>
@@ -63,20 +62,23 @@ const ProfileSettings = () => {
         <div className="profile-settings | fw-semibold">
             <div>
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <p>Kyra Diaz</p>
+                <p>Name Surname</p>
             </div>
             <div>
                 {/* spacer */}
             </div>
-            <div>
+            <button>
+                <Icon name="Setting_line"></Icon>
                 <p>Settings</p>
-            </div>
-            <div>
+            </button>
+            <button>
+                <Icon name="Question"></Icon>
                 <p>Help & Support</p>
-            </div>
-            <div>
+            </button>
+            <button>
+                <Icon name="Sign_out_squre"></Icon>
                 <p>Log out</p>
-            </div>
+            </button>
         </div>
     )
 }

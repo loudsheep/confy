@@ -6,7 +6,7 @@
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <title>Confy</title>
         @viteReactRefresh 
-        @vite(['resources/css/app.css', 'resources/js/app.jsx'])
+        @vite(['resources/js/app.jsx'])
         <!-- As you can see, we will use vite with jsx syntax for React-->
         @inertiaHead
     </head>

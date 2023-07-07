@@ -19,3 +19,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Home');
 });
+
+
+// Require routes from auth.php file
+require __DIR__.'/auth.php';

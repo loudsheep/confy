@@ -35,7 +35,7 @@ export default function Register() {
                 <input type="text" name="name" placeholder={"name"} onChange={handleOnChange} />    <br />
                 {errors.name} <br /><br />
 
-                <input type="text" name="email" placeholder={"email"} onChange={handleOnChange} />    <br />
+                <input type="email" name="email" placeholder={"email"} onChange={handleOnChange} />    <br />
                 {errors.email} <br /><br />
 
                 <input type="password" name="password" placeholder={"password"} onChange={handleOnChange} />    <br />

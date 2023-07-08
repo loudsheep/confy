@@ -21,12 +21,13 @@ const Menus = () => {
         <div>
             <div className="profile-notifications">
                 <button className="notifications-btn" onClick={onClickNotifications}>
-                    <Icon name="Bell"></Icon>
+                    {showNotifications ? <Icon name="Bell_fill"></Icon> : null}
+                    {!showNotifications ? <Icon name="Bell"></Icon> : null}
                 </button>
                 <button className="profile" onClick={onClickProfile}>
                     <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                    <div className="expand-down">
-                        <Icon name="Expand_down"></Icon>
+                    <div className="expand">
+                        <Icon name={"Expand_down"}></Icon>
                     </div>
                 </button>
             </div>
@@ -39,9 +40,9 @@ const Menus = () => {
 const Notifications = () => {
     return (
         <section className="notifications menu">
-            <div>
+            <div className="notifications-heading">
                 <h2 className="fw-bold clr-neutral-500">Notifications</h2>
-                <div>
+                <div className="buttons">
                     <button>
                         <Icon name="Filter_alt"></Icon>
                     </button>
@@ -60,20 +61,20 @@ const Notifications = () => {
 const ProfileSettings = () => {
     return (
         <div className="profile-settings menu | fw-semibold">
-            <a href="#">
+            <a href="#" className="menu-item">
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <p>Name Surname</p>
+                <p>Kyra Diaz</p>
             </a>
             <div className="line"></div>
-            <a href="#">
+            <a href="#" className="menu-item">
                 <Icon name="Setting_line"></Icon>
                 <p>Settings</p>
             </a>
-            <a href="#">
+            <a href="#" className="menu-item">
                 <Icon name="Question"></Icon>
                 <p>Help & Support</p>
             </a>
-            <a href="#">
+            <a href="#" className="menu-item">
                 <Icon name="Sign_out_squre"></Icon>
                 <p>Log out</p>
             </a>

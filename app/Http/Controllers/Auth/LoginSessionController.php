@@ -48,6 +48,6 @@ class LoginSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(RouteServiceProvider::HOME);
     }
 }

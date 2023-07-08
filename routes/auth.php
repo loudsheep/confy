@@ -13,3 +13,10 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [LoginSessionController::class, 'store']);
 });
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('logout', [LoginSessionController::class, 'destroy'])->name('logout');
+
+    Route::post('logout', [LoginSessionController::class, 'destroy'])->name('logout');
+});

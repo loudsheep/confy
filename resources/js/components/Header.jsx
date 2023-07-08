@@ -6,12 +6,12 @@ import Menus from "../components/Menus";
 
 const Header = () => {
     return (
-        <header>
+        <header className="primary-header">
             <Logo></Logo>
             <SearchBar></SearchBar>
             <Menus></Menus>
         </header>
     )
-}
+}   
 
 export default Header

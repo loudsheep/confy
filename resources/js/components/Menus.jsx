@@ -19,28 +19,28 @@ const Menus = () => {
 
     return (
         <div>
-            <button className="notifications" onClick={onClickNotifications}>
-                <Icon name="Bell"></Icon>
-            </button>
-            <button className="profile" onClick={onClickProfile}>
-                <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <div className="expand-down">
-                    <Icon name="Expand_down"></Icon>
-                </div>
-            </button>
-            <div>
-                {showNotifications ? <Notifications></Notifications> : null}
-                {showProfile ? <ProfileSettings></ProfileSettings> : null}
+            <div className="profile-notifications">
+                <button className="notifications-btn" onClick={onClickNotifications}>
+                    <Icon name="Bell"></Icon>
+                </button>
+                <button className="profile" onClick={onClickProfile}>
+                    <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
+                    <div className="expand-down">
+                        <Icon name="Expand_down"></Icon>
+                    </div>
+                </button>
             </div>
+            {showNotifications ? <Notifications></Notifications> : null}
+            {showProfile ? <ProfileSettings></ProfileSettings> : null}
         </div>
     )
 }
 
 const Notifications = () => {
     return (
-        <section>
+        <section className="notifications menu">
             <div>
-                <h1 className="fw-bold">Notifications</h1>
+                <h2 className="fw-bold clr-neutral-500">Notifications</h2>
                 <div>
                     <button>
                         <Icon name="Filter_alt"></Icon>
@@ -59,26 +59,24 @@ const Notifications = () => {
 
 const ProfileSettings = () => {
     return (
-        <div className="profile-settings | fw-semibold">
-            <div>
+        <div className="profile-settings menu | fw-semibold">
+            <a href="#">
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
                 <p>Name Surname</p>
-            </div>
-            <div>
-                {/* spacer */}
-            </div>
-            <button>
+            </a>
+            <div className="line"></div>
+            <a href="#">
                 <Icon name="Setting_line"></Icon>
                 <p>Settings</p>
-            </button>
-            <button>
+            </a>
+            <a href="#">
                 <Icon name="Question"></Icon>
                 <p>Help & Support</p>
-            </button>
-            <button>
+            </a>
+            <a href="#">
                 <Icon name="Sign_out_squre"></Icon>
                 <p>Log out</p>
-            </button>
+            </a>
         </div>
     )
 }

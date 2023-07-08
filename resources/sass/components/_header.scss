@@ -1,3 +1,37 @@
+.primary-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--clr-neutral-100);
+
+    padding: var(--size-200) var(--size-500);
+    border-radius: var(--size-500);
+
+}
+
+.profile-notifications {
+    display: flex;
+    flex-direction: row;
+
+    gap: var(--size-300);
+}
+
+.menu {
+    position: absolute;
+    right: 0;
+    
+    background: var(--clr-neutral-100) ;
+
+    margin: var(--size-400) var(--size-500);
+    padding: var(--size-500);
+
+    border-radius: var(--size-500);
+
+}
+
 .profile-settings {
     max-width: 300px;
 
@@ -5,7 +39,8 @@
     flex-direction: column;
     gap: var(--size-500);
 
-    button,div {
+    a,
+    div {
         width: 100%;
         gap: var(--size-500);
 
@@ -16,31 +51,87 @@
         flex-direction: row;
 
         align-items: center;
+
+        text-decoration: none;
+
     }
+}
+
+.notifications-btn {
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    padding: var(--size-300);
+
+    width: var(--size-800);
+    height: var(--size-800);
+    aspect-ratio: 1 / 1;
+
+    background: var(--clr-primary-500);
+    border: none;
+
+    border-radius: 50%;
+
+    .icon {
+
+        --icon-color: var(--clr-neutral-100);
+
+        width: var(--size-600);
+
+    }
+
 }
 
 .profile {
     position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+
+    padding: 0px;
+
+    width: var(--size-800);
+    height: var(--size-800);
+    aspect-ratio: 1 / 1;
+
+    background: none;
+    border: none;
+
+    &:hover,
+    &:focus {
+        opacity: 90%;
+    }
 
     .expand-down {
         position: absolute;
         bottom: 0;
         right: 0;
 
+        display: flex;
+
+        background-color: var(--clr-primary-500);
+        border-radius: 50%;
+
         width: var(--size-400);
         aspect-ratio: 1 / 1;
 
         .icon {
+
+            --icon-color: var(--clr-neutral-100);
+
             width: inherit;
             aspect-ratio: 1 / 1;
         }
-        
+
     }
 
 }
 
 .icon {
-    width: 40px;
+    width: var(--size-750);
     aspect-ratio: 1 / 1;
 
     fill: none;

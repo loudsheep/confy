@@ -9,6 +9,7 @@ $colors: (
     'neutral': (
         '100': hsl(0, 0%, 99%),
         '200': hsl(216, 20%, 95%),
+        '300': hsl(216, 20%, 85%),
         '500': hsl(216, 20%, 30%),
         '800': hsl(216, 20%, 20%),
         '900': hsl(216, 19%, 15%)
@@ -19,10 +20,14 @@ $colors: (
     )
 );
 
-:root {
-    @each $color, $shades in $colors {
-        @each $shade, $value in $shades {
+@each $color, $shades in $colors {
+    @each $shade, $value in $shades {
+        :root {
             --clr-#{$color}-#{$shade}: #{$value};
+        }
+
+        .clr-#{$color}-#{$shade} {
+            color: #{$value};
         }
     }
 }

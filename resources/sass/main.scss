@@ -1,8 +1,11 @@
+@use '../sass/base/typography';
+@use '../sass/base/reset';
+
 @use '../sass/abstracts/colors';
 @use '../sass/abstracts/size';
 
-@use '../sass/components/header';
-@use '../sass/components/profilePicture';
+@use '../sass/pages/home';
 
-@use '../sass/base/typography';
-@use '../sass/base/reset';
+@use '../sass/components/header';
+@use '../sass/components/line';
+@use '../sass/components/profilePicture';

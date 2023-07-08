@@ -30,6 +30,7 @@ export default function Register() {
 
     return (
         <>
+            TODO more fields: first_name, last_name, date_of_birth, profile_image, profile_description, etc.
             <form onSubmit={submit}>
                 <input type="text" name="name" placeholder={"name"} onChange={handleOnChange} />    <br />
                 {errors.name} <br /><br />

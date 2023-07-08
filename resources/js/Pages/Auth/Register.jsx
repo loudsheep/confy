@@ -18,8 +18,7 @@ export default function Register() {
     }, []);
 
     const handleOnChange = (event) => {
-        // TODO after adding Remember Me checkbox, add condition to pass either event.target.value or event.target.checked
-        setData(event.target.name, event.target.value);
+        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
     // submit the form, do not reload, and send data to login controller

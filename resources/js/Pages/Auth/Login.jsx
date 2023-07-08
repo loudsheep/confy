@@ -6,6 +6,7 @@ export default function Login({ status }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: '',
         password: '',
+        remember: '',
     });
 
     // clear password filed on page rerender
@@ -16,8 +17,8 @@ export default function Login({ status }) {
     }, []);
 
     const handleOnChange = (event) => {
-        // TODO after adding Remember Me checkbox, add condition to pass either event.target.value or event.target.checked
-        setData(event.target.name, event.target.value);
+        console.log(event.target.type);
+        setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
     // submit the form, do not reload, and send data to login controller
@@ -30,10 +31,15 @@ export default function Login({ status }) {
     return (
         <>
             <form onSubmit={submit}>
-                <input type="text" name="email" placeholder={"email"} onChange={handleOnChange} />    <br />
+                <input type="text" name="email" placeholder={"email"} onChange={handleOnChange} value={data.email}/>    <br />
                 {errors.email} <br /><br />
-                <input type="password" name="password" placeholder={"password"} onChange={handleOnChange} /> <br />
+                <input type="password" name="password" placeholder={"password"} onChange={handleOnChange} value={data.password}/> <br />
                 {errors.password} <br /><br />
+
+                <input type="checkbox" name="remember" id="remember-checkbox" onChange={handleOnChange}/>
+                <label htmlFor="remember-checkbox" checked={data.remember}>Remember Me</label>
+
+                <br /><br />
 
                 <input type="submit" value="Login" />
             </form>

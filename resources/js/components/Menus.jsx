@@ -42,7 +42,7 @@ const Notifications = () => {
         <section className="notifications menu">
             <div className="notifications-heading">
                 <h2 className="fw-bold clr-neutral-500">Notifications</h2>
-                <div className="buttons">
+                <div>
                     <button>
                         <Icon name="Filter_alt"></Icon>
                     </button>
@@ -52,10 +52,20 @@ const Notifications = () => {
                 </div>
             </div>
             <ul role="list" aria-label="Notifications">
+                <NoNotifications/>
                 {/* notifications */}
             </ul>
         </section>
     )
+}
+
+const NoNotifications = () => {
+    return (
+        <div className="no-notifications">
+            <Icon name="Bell"></Icon>
+            <p className="fw-bold clr-neutral-500">You have no notifications</p>
+        </div>
+    );
 }
 
 const ProfileSettings = () => {

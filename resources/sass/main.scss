@@ -6,8 +6,9 @@
 
 @use '../sass/pages/home';
 
-@use '../sass/layouts/menu';
-
 @use '../sass/components/header';
 @use '../sass/components/line';
 @use '../sass/components/profilePicture';
+
+@use '../sass/layouts/menu';
+@use '../sass/layouts/breakpoints';

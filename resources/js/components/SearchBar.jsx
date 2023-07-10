@@ -17,7 +17,7 @@ const SearchBar = () => {
     return (
         <div className="search">
             {/* small only */}
-            <button className="search-btn" style={{display: "none"}}>
+            <button className="search-btn | sm-only">
                 {showSearch ? <Icon name="Search_alt"></Icon> : null}
                 {!showSearch ? <Icon name="Search_alt"></Icon> : null}
             </button>

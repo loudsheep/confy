@@ -44,7 +44,7 @@ jobs:
       
     - name: Prepare Laravel Application
       run: |
-        cp .env.ci .env
+        cp .env.gh .env
         php artisan key:generate
       
     - name: Install front-end dependencies
@@ -54,9 +54,3 @@ jobs:
       
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/
-
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test

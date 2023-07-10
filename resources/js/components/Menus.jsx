@@ -84,7 +84,7 @@ const ProfileSettings = () => {
                 <Icon name="Question"></Icon>
                 <p>Help & Support</p>
             </a>
-            <a href="#" className="menu-item">
+            <a href={route('logout')} className="menu-item">
                 <Icon name="Sign_out_squre"></Icon>
                 <p>Log out</p>
             </a>

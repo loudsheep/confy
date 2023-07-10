@@ -50,7 +50,7 @@ jobs:
     - name: Install front-end dependencies
       run: |
         npm install
-        npm run dev
+        npm run build
       
     - name: Run Testsuite
       run: vendor/bin/phpunit tests/

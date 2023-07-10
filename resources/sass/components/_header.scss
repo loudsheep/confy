@@ -1,15 +1,32 @@
 .primary-header {
     position: relative;
-
-    display: flex;
     align-items: center;
-    justify-content: space-between;
 
     background: var(--clr-neutral-100);
 
     padding: var(--size-200) var(--size-500);
     border-radius: var(--size-500);
 
+}
+
+//logo
+
+.logo {
+    &[data-type="full"] {
+        display: none;
+    }
+    &[data-type="icon"] {
+        display: block;
+    }
+
+    @media only screen and (min-width: 60em) {
+        &[data-type="full"] {
+            display: block;
+        }
+        &[data-type="icon"] {
+            display: none;
+        }
+    }
 }
 
 .profile-notifications {
@@ -220,17 +237,30 @@
 
 .search {
     position: relative;
-
     --menu-width: 100%;
-    width: min(50%, 40rem);
+}
+
+.search-btn {
+
+    display: flex;
+
+    @media only screen and (min-width: 45em) {
+        display: none;
+    }
 }
 
 .searchbar {
-    background: var(--clr-neutral-200);
-    
-    width: 100%;
 
-    display: flex;
+
+    background: var(--clr-neutral-200);
+    width: auto;
+
+    display: none;
+
+    @media only screen and (min-width: 45em) {
+        display: flex;
+    }
+    
     align-items: center;
 
     padding: var(--size-200) var(--size-500);

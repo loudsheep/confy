@@ -4,6 +4,13 @@ import Icon from "../components/Icon";
 
 const Menus = () => {
 
+    //show and hide search
+    const [showSearch, setShowSearch] = useState(false);
+    const onClickSearch = () => {
+        setShowSearch(!showSearch);
+    }
+
+
     //show and hide notifications
     const [showNotifications, setShowNotifications] = useState(false);
     const onClickNotifications = () => {
@@ -18,7 +25,14 @@ const Menus = () => {
     };
 
     return (
-        <div>
+        <div className="flex" style={{"--gap-size": "var(--size-300)"}}>
+            {/* small only */}
+            <button className="search-btn"
+            onClick={onClickSearch}>
+                {showSearch ? <Icon name="Search_alt"></Icon> : null}
+                {!showSearch ? <Icon name="Search_alt"></Icon> : null}
+            </button>
+
             <div className="profile-notifications">
                 <button className="notifications-btn"
                     onClick={onClickNotifications}>

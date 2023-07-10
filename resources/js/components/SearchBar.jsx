@@ -3,8 +3,6 @@ import Icon from "./Icon";
 
 const SearchBar = () => {
 
-    const [showSearch, setShowSearch] = useState(false);
-
     const [showRecent, setShowRecent] = useState(false);
 
     const onFocusDisplayRecent = (recent) => {
@@ -16,12 +14,6 @@ const SearchBar = () => {
 
     return (
         <div className="search">
-            {/* small only */}
-            <button className="search-btn | sm-only">
-                {showSearch ? <Icon name="Search_alt"></Icon> : null}
-                {!showSearch ? <Icon name="Search_alt"></Icon> : null}
-            </button>
-
             <div className="searchbar">
                 <Icon name="Search_alt"></Icon>
                 <input className="search-input" type="search" placeholder="Search Confy"

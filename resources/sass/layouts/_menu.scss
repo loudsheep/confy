@@ -1,7 +1,16 @@
 .menu {
+    @media screen and (max-width: 425px) {
+        position: absolute;
+        inset-inline: var(--size-300);
+
+        width: 100%;
+    }
+
     position: absolute;
     right: 0;
+    top: var(--size-800);
 
     width: var(--menu-width);
     margin-block-start: var(--size-600);
+
 }

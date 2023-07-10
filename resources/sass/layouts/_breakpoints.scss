@@ -1,9 +1,0 @@
-.sm-only {
-    display: none;
-}
-
-@media screen and (max-width: var(--br-sm)) {
-    .sm-only {
-        display: block;
-    }
-}

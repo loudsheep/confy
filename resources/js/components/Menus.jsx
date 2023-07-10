@@ -20,11 +20,13 @@ const Menus = () => {
     return (
         <div>
             <div className="profile-notifications">
-                <button className="notifications-btn" onClick={onClickNotifications}>
+                <button className="notifications-btn"
+                    onClick={onClickNotifications}>
                     {showNotifications ? <Icon name="Bell_fill"></Icon> : null}
                     {!showNotifications ? <Icon name="Bell"></Icon> : null}
                 </button>
-                <button className="profile" onClick={onClickProfile}>
+                <button className="profile"
+                    onClick={onClickProfile}>
                     <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
                     <div className="expand">
                         <Icon name={"Expand_down"}></Icon>
@@ -52,7 +54,7 @@ const Notifications = () => {
                 </div>
             </div>
             <ul role="list" aria-label="Notifications">
-                <NoNotifications/>
+                <NoNotifications />
                 {/* notifications */}
             </ul>
         </section>

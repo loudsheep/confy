@@ -43,6 +43,10 @@ export default function Login({ status }) {
 
                 <input type="submit" value="Login" />
             </form>
+
+            <a href={route('register')}>Register instead</a>
+            <br />
+            <a href={route('password.request')}>Forgot password?</a>
         </>
     )
 }

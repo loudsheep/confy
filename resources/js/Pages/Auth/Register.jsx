@@ -46,6 +46,8 @@ export default function Register() {
 
                 <input type="submit" value="Register" />
             </form>
+
+            <a href={route('login')}>Login instead</a>
         </>
     )
 }

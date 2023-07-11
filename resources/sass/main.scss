@@ -1,9 +1,12 @@
 @use '../sass/base/typography';
 @use '../sass/base/reset';
 
+@use '../sass/abstracts/colors';
+@use '../sass/abstracts/breakpoints';
+@use '../sass/abstracts/size';
+
 @use '../sass/layouts/menu';
 @use '../sass/layouts/flex';
-@use '../sass/layouts/columns';
 
 @use '../sass/components/header';
 @use '../sass/components/line';
@@ -11,7 +14,3 @@
 
 @use '../sass/pages/home';
 
-
-@use '../sass/abstracts/colors';
-@use '../sass/abstracts/breakpoints';
-@use '../sass/abstracts/size';

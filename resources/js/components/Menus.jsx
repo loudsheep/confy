@@ -1,39 +1,29 @@
 import React, { useState } from "react";
 
 import Icon from "../components/Icon";
-import MobileSearchBar from "../components/SearchBar";
 
 const Menus = ({ username }) => {
-
-    //show and hide search
-    const [showSearch, setShowSearch] = useState(false);
-    const onClickSearch = () => {
-        setShowProfile(false);
-        setShowNotifications(false);
-        setShowSearch(!showSearch);
-    }
+    
     //show and hide notifications
     const [showNotifications, setShowNotifications] = useState(false);
     const onClickNotifications = () => {
         setShowProfile(false);
-        setShowSearch(false);
         setShowNotifications(!showNotifications);
     };
     //show and hide profile & settings
     const [showProfile, setShowProfile] = useState(false);
     const onClickProfile = () => {
         setShowNotifications(false);
-        setShowSearch(false);
         setShowProfile(!showProfile);
     };
+    const onBlurProfile = () => {
+        console.log("blur")
+        setShowProfile(!showProfile);
+    };
+    
 
     return (
-        <div className="header-menus flex" style={{ "--gap-size": "var(--size-300)" }}>
-            <button className="search-btn"
-                onClick={onClickSearch}>
-                {showSearch ? <Icon name="Search_alt"></Icon> : null}
-                {!showSearch ? <Icon name="Search_alt"></Icon> : null}
-            </button>
+        <div className="header-menus">
             <div className="pn-dropdown">
                 <button className="notifications-btn"
                     onClick={onClickNotifications}>
@@ -51,7 +41,6 @@ const Menus = ({ username }) => {
             <div className="menu">
                 {showNotifications ? <Notifications></Notifications> : null}
                 {showProfile ? <ProfileSettings username={username}></ProfileSettings> : null}
-                {showSearch ? <MobileSearchBar></MobileSearchBar> : null}
             </div>
         </div>
     )
@@ -59,7 +48,7 @@ const Menus = ({ username }) => {
 
 const Notifications = () => {
     return (
-        <section className="notifications">
+        <section className="notifications" id="notifications-menu" autoFocus>
             <div className="notifications-heading">
                 <h2 className="fw-bold clr-neutral-500">Notifications</h2>
                 <div>
@@ -90,10 +79,10 @@ const NoNotifications = () => {
 
 const ProfileSettings = ({ username }) => {
     return (
-        <div className="profile-settings | fw-semibold">
+        <div className="profile-settings | fw-semibold" id="profile-menu" autoFocus>
             <a href="#" className="menu-item">
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <p>{username}</p>
+                <p id="username" aria-description="username">{username}</p>
             </a>
             <div className="line"></div>
             <a href="#" className="menu-item">

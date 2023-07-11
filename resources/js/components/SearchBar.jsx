@@ -3,8 +3,16 @@ import Icon from "./Icon";
 
 const SearchBar = () => {
 
-    const [showRecent, setShowRecent] = useState(false);
+    const [showSearch, setShowSearch] = useState(false);
 
+    const onClickSearch = () => {
+        setShowSearch(!showSearch);
+    }
+    const onBlurSearch = () => {
+        setShowSearch(false);
+    }
+
+    const [showRecent, setShowRecent] = useState(false);
     const onFocusDisplayRecent = (recent) => {
         setShowRecent(true);
     }
@@ -14,11 +22,19 @@ const SearchBar = () => {
 
     return (
         <div className="search">
-            <div className="searchbar">
-                <Icon name="Search_alt"></Icon>
-                <input className="search-input" type="search" placeholder="Search Confy"
-                    onFocus={onFocusDisplayRecent}
-                    onBlur={onDefocusHideRecent} />
+            <div className="search-container">
+                <button className="search-btn"
+                    onClick={onClickSearch}
+                    onBlur={onBlurSearch}>
+                    {showSearch ? <Icon name="Search_alt_fill"></Icon> : null}
+                    {!showSearch ? <Icon name="Search_alt"></Icon> : null}
+                </button>
+                <div className="searchbar expand" data-expanded={showSearch}>
+                    <Icon name="Search_alt"></Icon>
+                    <input className="search-input" type="search" placeholder="Search Confy"
+                        onFocus={onFocusDisplayRecent}
+                        onBlur={onDefocusHideRecent} />
+                </div>
             </div>
             <div className="menu">
                 {showRecent ? <RecentSearch /> : null}
@@ -29,16 +45,6 @@ const SearchBar = () => {
         </div>
     )
 }
-
-const MobileSearchBar = () => {
-    return (
-        <div>
-            <h2>Search</h2>
-        </div>
-    )
-}
-
-export { MobileSearchBar }
 
 const RecentSearch = () => {
     return (

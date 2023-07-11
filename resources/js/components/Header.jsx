@@ -6,7 +6,7 @@ import Menus from "../components/Menus";
 
 const Header = ({ username }) => {
     return (
-        <header className="primary-header columns">
+        <header className="primary-header">
             <Logo></Logo>
             <SearchBar></SearchBar>
             <Menus username={username}></Menus>

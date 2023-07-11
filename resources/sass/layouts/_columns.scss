@@ -1,6 +1,6 @@
 .columns {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto clamp(30%, 40%, 38rem) auto;
 
     justify-content: space-between;
 }

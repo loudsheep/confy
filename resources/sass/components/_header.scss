@@ -4,7 +4,7 @@
 
     background: var(--clr-neutral-100);
 
-    padding: var(--size-200) var(--size-500);
+    padding-inline: var(--size-200);
     border-radius: var(--size-500);
 
 }
@@ -29,22 +29,26 @@
     }
 }
 
-.profile-notifications {
+
+.icon {
+    width: var(--size-700);
+    aspect-ratio: 1 / 1;
+    
+    fill: none;
+    
+    --icon-color: var(--clr-neutral-900);
+}
+
+.header-menus {
+    --menu-width: 20em;
+}
+
+.pn-dropdown {
     display: flex;
     flex-direction: row;
 
     gap: var(--size-300);
 }
-
-.icon {
-    width: var(--size-700);
-    aspect-ratio: 1 / 1;
-
-    fill: none;
-
-    --icon-color: var(--clr-neutral-900);
-}
-
 //Notifications
 
 .notifications {

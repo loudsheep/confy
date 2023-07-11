@@ -5,17 +5,10 @@ import SearchBar from "../components/SearchBar";
 import Menus from "../components/Menus";
 
 const Header = () => {
-
-    const [showSearchBar, setShowSearchBar] = useState(true);
-
-    window.onresize = () => {
-
-    }
-
     return (
         <header className="primary-header columns">
             <Logo></Logo>
-            {showSearchBar ? <SearchBar></SearchBar> : null}
+            <SearchBar></SearchBar>
             <Menus></Menus>
         </header>
     )

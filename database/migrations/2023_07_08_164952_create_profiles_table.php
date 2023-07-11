@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->date('date_of_birth');
-            $table->text('profile_description');
+            $table->text('description');
             $table->timestamps();
         });
     }

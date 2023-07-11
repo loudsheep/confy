@@ -4,7 +4,9 @@ import { useForm } from '@inertiajs/react';
 export default function Register() {
     // create empty form
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        first_name: '',
+        last_name: '',
+        date_of_birth: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -32,8 +34,14 @@ export default function Register() {
         <>
             TODO more fields: first_name, last_name, date_of_birth, profile_image, profile_description, etc.
             <form onSubmit={submit}>
-                <input type="text" name="name" placeholder={"name"} onChange={handleOnChange} />    <br />
-                {errors.name} <br /><br />
+                <input type="text" name="first_name" placeholder={"First name"} onChange={handleOnChange} />    <br />
+                {errors.first_name} <br /><br />
+
+                <input type="text" name="last_name" placeholder={"Last name"} onChange={handleOnChange} />    <br />
+                {errors.last_name} <br /><br />
+
+                <input type="date" name="date_of_birth" placeholder={"date of birth"} onChange={handleOnChange} />    <br />
+                {errors.date_of_birth} <br /><br />
 
                 <input type="email" name="email" placeholder={"email"} onChange={handleOnChange} />    <br />
                 {errors.email} <br /><br />

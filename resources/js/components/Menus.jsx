@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Icon from "../components/Icon";
 import MobileSearchBar from "../components/SearchBar";
 
-const Menus = () => {
+const Menus = ({ username }) => {
 
     //show and hide search
     const [showSearch, setShowSearch] = useState(false);
@@ -50,7 +50,7 @@ const Menus = () => {
             </div>
             <div className="menu">
                 {showNotifications ? <Notifications></Notifications> : null}
-                {showProfile ? <ProfileSettings></ProfileSettings> : null}
+                {showProfile ? <ProfileSettings username={username}></ProfileSettings> : null}
                 {showSearch ? <MobileSearchBar></MobileSearchBar> : null}
             </div>
         </div>
@@ -88,12 +88,12 @@ const NoNotifications = () => {
     );
 }
 
-const ProfileSettings = () => {
+const ProfileSettings = ({ username }) => {
     return (
         <div className="profile-settings | fw-semibold">
             <a href="#" className="menu-item">
                 <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <p>Kyra Diaz</p>
+                <p>{username}</p>
             </a>
             <div className="line"></div>
             <a href="#" className="menu-item">

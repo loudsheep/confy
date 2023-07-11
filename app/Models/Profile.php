@@ -9,7 +9,20 @@ class Profile extends Model
 {
     use HasFactory;
 
-    public function user() {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'date_of_birth',
+        'description',
+    ];
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

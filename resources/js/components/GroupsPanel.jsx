@@ -4,22 +4,17 @@ import Icon from "../components/Icon";
 
 const GroupsPanel = ({ groups = [] }) => {
 
-    let groupsToDisplay = [];
-
-    groupsToDisplay = groups.map(g => {
-        return Group(
-            g.id,
-            g.avatar,
-            g.name,
-            g.link
-        );
-    })
-
-    console.log(groupsToDisplay);
+    const groupsToDisplay = groups.map(g => <Group 
+        groupId={g.id} 
+        groupAvatar={g.avatar}
+        groupName={g.name}
+        groupLink={g.link}
+        ></Group>
+    );
 
     return (
         <div className='groups-panel'>
-            <h2 className='fw-semibold fs-500 clr-neutral-500'>Groups</h2>
+            <h2 className='fw-semibold fs-500 clr-neutral-500 panel-heading'>Groups</h2>
             <ul className='groups-list' role='list'>
                 {
                     groups.length != 0 ?
@@ -32,12 +27,12 @@ const GroupsPanel = ({ groups = [] }) => {
 }
 
 
-const Group = ({ groupId }, { groupAvatar }, { groupName }, { groupLink }) => {
+const Group = ({ groupId = "-1", groupAvatar = "", groupName ="", groupLink = ""}) => {
     return (
-        <li key={groupId} className='group'>
-            <a href={groupLink}>
+        <li key={groupId}>
+            <a href={groupLink} className='group'>
                 <img className='profile-picture' src={groupAvatar} alt="" />
-                <h3 className='fw-medium fs-500'>{groupName}</h3>
+                <h3 className='fw-medium fs-500 group-name'>{groupName}</h3>
             </a>
         </li>
     );

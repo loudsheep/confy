@@ -38,9 +38,10 @@ class RegisterController extends Controller
             'date_of_birth' => 'required|date',
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'avatar' => ['required', 'image', 'mimes:png,jpg,bmp'],
         ]);
 
-        // dd($request);
+        // TODO upload the avatar and save path to image in DB
 
         $user = User::create([
             'name' => $request->first_name . " " . $request->last_name,

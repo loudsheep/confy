@@ -10,6 +10,7 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        avatar: null,
     });
 
     // clear password filed on page rerender
@@ -22,6 +23,10 @@ export default function Register() {
     const handleOnChange = (event) => {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
+
+    const handleFileUpload = (event) => {
+        setData(event.target.name, event.target.files[0]);
+    }
 
     // submit the form, do not reload, and send data to login controller
     const submit = (e) => {
@@ -51,6 +56,15 @@ export default function Register() {
 
                 <input type="password" name="password_confirmation" placeholder={"password_confirmation"} onChange={handleOnChange} /> <br />
                 {errors.password_confirmation} <br /><br />
+
+                <input type="file" name="avatar" id="" onChange={handleFileUpload} /> <br />
+                {errors.avatar} <br /><br />
+
+                {data.avatar !== null && (
+                    <img src={URL.createObjectURL(data.avatar)} alt="" />
+                )}
+
+                <br />
 
                 <input type="submit" value="Register" />
             </form>

@@ -31,7 +31,7 @@ const Group = ({ groupId = "-1", groupAvatar = "", groupName ="", groupLink = ""
     return (
         <li key={groupId}>
             <a href={groupLink} className='group'>
-                <img className='profile-picture' src={groupAvatar} alt="" />
+                <img className='profile-picture' src={groupAvatar} alt={groupName} />
                 <h3 className='fw-medium fs-500 group-name'>{groupName}</h3>
             </a>
         </li>

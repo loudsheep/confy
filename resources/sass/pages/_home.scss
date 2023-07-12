@@ -3,7 +3,7 @@ body {
     margin: var(--size-400);
 }
 
-.left-panel {
+.left-panel, .right-panel {
     
     display: flex;
     flex-direction: column;

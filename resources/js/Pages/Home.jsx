@@ -5,7 +5,7 @@ import SideNav from "../components/SideNav";
 import GroupsPanel from "../components/GroupsPanel"; 
 import FriendsPanel from "../components/FriendsPanel"; 
 
-const Home = ({ auth }) => {
+const Home = ({ auth, profile }) => {
 
     //test only
     let groups = [
@@ -27,7 +27,7 @@ const Home = ({ auth }) => {
 
     return (
         <>
-            <Header username={auth.user.name}></Header>
+            <Header profile={profile}></Header>
             <div className='content'>
                 <section className='left-panel'>
                     <SideNav username={auth.user.name}></SideNav>

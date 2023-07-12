@@ -4,12 +4,12 @@ import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 import Menus from "../components/Menus";
 
-const Header = ({ username }) => {
+const Header = ({ profile }) => {
     return (
         <header className="primary-header">
             <Logo></Logo>
             <SearchBar></SearchBar>
-            <Menus username={username}></Menus>
+            <Menus profile={profile}></Menus>
         </header>
     )
 }

@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Intervention\Image\Facades\Image;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -38,22 +39,35 @@ class RegisterController extends Controller
             'date_of_birth' => 'required|date',
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'avatar' => ['required', 'image', 'mimes:png,jpg,bmp'],
+            'avatar' => ['image', 'mimes:png,jpg,bmp', 'nullable'],
         ]);
 
-        // TODO upload the avatar and save path to image in DB
+
+        $profile_image = "";
+        if ($request->avatar == null) {
+            $profile_image = "/defaults/profile.png";
+        } else {
+            $profile_image = $request->avatar->store('uploads', 'public');
+            $image = Image::make(public_path("storage/" . $profile_image))->fit(1000, 1000);
+            $image->save();
+
+            $profile_image = "/storage/" . $profile_image;
+        }
+
+        // dd($profile_image);
 
         $user = User::create([
-            'name' => $request->first_name . " " . $request->last_name,
+            'name' => $request->first_name . " " . $request->last_name . "chuj",
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
 
         $user->profile()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'date_of_birth' => $request->date_of_birth,
-            'description' => "lorem impsum",
+            'profile_image' => $profile_image,
         ]);
 
         event(new Registered($user));

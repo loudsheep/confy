@@ -1,0 +1,38 @@
+.groups-panel {
+
+    background: var(--clr-neutral-100);
+
+    border-radius: var(--size-500);
+    padding: var(--size-500);
+
+    .groups-list {
+
+        .group {
+
+        }
+
+    }
+
+}
+
+.no-groups {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-block: var(--size-500);
+    gap: var(--size-300);
+
+
+    .icon {
+
+        width: var(--size-800);
+        aspect-ratio: 1 / 1;
+
+        --icon-color: var(--clr-neutral-500);
+
+    }
+}

@@ -1,0 +1,5 @@
+.content {
+    display: grid;
+
+    grid-template-columns: min(18.75rem, 30%) clamp(15rem, 60%, 38rem) auto;
+}

@@ -11,7 +11,9 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::user() != null) {
-            return Inertia::render('Home');
+            return Inertia::render('Home', [
+                "profile" => Auth::user()->profile,
+            ]);
         } else {
             return Inertia::render('Auth/Login');
         }

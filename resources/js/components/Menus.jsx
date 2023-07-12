@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Icon from "../components/Icon";
 
-const Menus = ({ username }) => {
+const Menus = ({ profile }) => {
     
     //show and hide notifications
     const [showNotifications, setShowNotifications] = useState(false);
@@ -32,7 +32,7 @@ const Menus = ({ username }) => {
                 </button>
                 <button className="profile"
                     onClick={onClickProfile}>
-                    <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
+                    <img className="profile-picture" src={profile.profile_image} alt="Profile Image" />
                     <div className="expand">
                         <Icon name={"Expand_down"}></Icon>
                     </div>
@@ -40,7 +40,7 @@ const Menus = ({ username }) => {
             </div>
             <div className="menu">
                 {showNotifications ? <Notifications></Notifications> : null}
-                {showProfile ? <ProfileSettings username={username}></ProfileSettings> : null}
+                {showProfile ? <ProfileSettings profile={profile}></ProfileSettings> : null}
             </div>
         </div>
     )
@@ -77,12 +77,12 @@ const NoNotifications = () => {
     );
 }
 
-const ProfileSettings = ({ username }) => {
+const ProfileSettings = ({ profile }) => {
     return (
         <div className="profile-settings | fw-semibold" id="profile-menu" autoFocus>
             <a href="#" className="menu-item">
-                <img className="profile-picture" src="https://i.pravatar.cc/300" alt="Profile Image" />
-                <p id="username" aria-description="username">{username}</p>
+                <img className="profile-picture" src={profile.profile_image} alt="Profile Image" />
+                <p id="username" aria-description="username">{profile.first_name + " " + profile.last_name}</p>
             </a>
             <div className="line"></div>
             <a href="#" className="menu-item">

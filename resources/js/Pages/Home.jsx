@@ -30,7 +30,7 @@ const Home = ({ auth, profile }) => {
             <Header profile={profile}></Header>
             <div className='content'>
                 <section className='left-panel'>
-                    <SideNav username={auth.user.name}></SideNav>
+                    <SideNav profile={profile}></SideNav>
                     <GroupsPanel groups={groups}></GroupsPanel>
                 </section>
                 <main className='main-panel'>

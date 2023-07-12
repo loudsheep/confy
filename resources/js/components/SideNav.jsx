@@ -2,7 +2,7 @@ import React from 'react';
 
 import Icon from '../components/Icon';
 
-const SideNav = ({username}) => {
+const SideNav = ({profile}) => {
     return (
         <div className='side-nav'>
             <ul className='nav' role='list'>
@@ -14,8 +14,8 @@ const SideNav = ({username}) => {
                 </li>
                 <li>
                     <a href="" className='nav-item'>
-                        <img className='profile-picture' src="https://i.pravatar.cc/300" alt="" />
-                        <h2 className='fw-semibold fs-500 | nav-item-header'>{username}</h2>
+                        <img className='profile-picture' src={profile.profile_image} alt="" />
+                        <h2 className='fw-semibold fs-500 | nav-item-header'>{profile.first_name + " " + profile.last_name}</h2>
                     </a>
                 </li>
             </ul>

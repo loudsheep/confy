@@ -57,7 +57,7 @@ class RegisterController extends Controller
         // dd($profile_image);
 
         $user = User::create([
-            'name' => $request->first_name . " " . $request->last_name . "chuj",
+            'name' => $request->first_name . " " . $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

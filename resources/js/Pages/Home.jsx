@@ -5,7 +5,7 @@ import SideNav from "../components/SideNav";
 import GroupsPanel from "../components/GroupsPanel"; 
 import FriendsPanel from "../components/FriendsPanel"; 
 
-const Home = ({ auth, profile }) => {
+const Home = ({ auth, profile, friends }) => {
 
     //test only
     let groups = [
@@ -16,14 +16,14 @@ const Home = ({ auth, profile }) => {
             link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
         }
     ];
-    let friends = [
-        {
-            id : "2137",
-            avatar : "https://i.pravatar.cc/300",
-            name : "John Doe",
-            link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
-        }
-    ];
+    // let friends = [
+    //     {
+    //         id : "2137",
+    //         avatar : "https://i.pravatar.cc/300",
+    //         name : "John Doe",
+    //         link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
+    //     }
+    // ];
 
     return (
         <>

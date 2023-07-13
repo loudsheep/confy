@@ -4,11 +4,15 @@ import Icon from "../components/Icon";
 
 const FriendsPanel = ({ friends = [] }) => {
 
+
+    // this checks when friend has last updated its active status,
+    // if it is below 5 minutes ago then a friend is considered active
     const friendsToDisplay = friends.map(f => <Friend
         friendId={f.id}
-        friendAvatar={f.avatar}
+        friendAvatar={f.profile.profile_image}
         friendName={f.name}
-        friendLink={f.link}
+        friendActive={Date.now() - Date.parse(f.last_seen) < 5 * 60 * 1000}
+        friendLink={"dewde"}
     ></Friend>
     );
 
@@ -27,12 +31,12 @@ const FriendsPanel = ({ friends = [] }) => {
 }
 
 
-const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendLink = "" }) => {
+const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendLink = "", friendActive = false }) => {
     return (
         <li key={friendId}>
             <a href={friendLink} className='friend'>
                 <img className='profile-picture' src={friendAvatar} alt={friendName} />
-                <h3 className='fw-medium fs-500 friend-name'>{friendName}</h3>
+                <h3 className='fw-medium fs-500 friend-name' style={{ color: friendActive ? "lime" : null }}>{friendName}</h3>
             </a>
         </li>
     );

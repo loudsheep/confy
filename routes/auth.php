@@ -5,8 +5,9 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
-Route::middleware('guest')->group(function () {
+Route::middleware(['guest'])->group(function () {
     Route::get('register', [RegisterController::class, 'create'])->name('register');
 
     Route::post('register', [RegisterController::class, 'store']);
@@ -25,8 +26,12 @@ Route::middleware('guest')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'web'])->group(function () {
     Route::get('logout', [LoginSessionController::class, 'destroy'])->name('logout');
 
     Route::post('logout', [LoginSessionController::class, 'destroy']);
+
+    Route::get('profile', function () {
+        return Inertia::render('Profile');
+    });
 });

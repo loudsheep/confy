@@ -17,8 +17,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware(['web'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->middleware('web')->name('home');
+});
 
 
 // Require routes from auth.php file
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

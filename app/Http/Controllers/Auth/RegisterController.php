@@ -47,8 +47,8 @@ class RegisterController extends Controller
         if ($request->avatar == null) {
             $profile_image = "/defaults/profile.png";
         } else {
-            $profile_image = $request->avatar->store('uploads', 'public');
-            $image = Image::make(public_path("storage/" . $profile_image))->fit(1000, 1000);
+            $profile_image = $request->avatar->store('avatars', 'public');
+            $image = Image::make(public_path("storage/" . $profile_image))->fit(200, 200);
             $image->save();
 
             $profile_image = "/storage/" . $profile_image;

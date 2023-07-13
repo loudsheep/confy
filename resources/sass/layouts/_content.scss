@@ -1,5 +1,16 @@
 .content {
     display: grid;
-
     grid-template-columns: min(18.75rem, 30%) auto min(18.75rem, 30%);
+
+    @media only screen and (max-width: 80em) {
+        grid-template-columns: 4rem auto min(18.75rem, 30%);
+    }
+
+    @media only screen and (max-width: 60em) {
+        grid-template-columns: max(4rem, 10%) auto;
+    }
+
+    @media only screen and (max-width: 30em) {
+        grid-template-columns: auto;
+    }
 }

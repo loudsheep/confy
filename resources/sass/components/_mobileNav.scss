@@ -1,0 +1,44 @@
+.mobile-nav {
+
+    display: none;
+    grid-template-columns: 30% 30% 30%;
+
+    justify-content: space-between;
+
+    width: 100%;
+    gap: auto;  
+
+    @media only screen and (max-width: 30em) {
+        display: grid;
+    }
+
+    .nav-item {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--clr-primary-500);
+
+        height: var(--size-800);
+
+        padding: var(--size-300) var(--size-700);
+        border-radius: var(--size-500);
+
+        .icon {
+
+            width: 1.75rem;
+            aspect-ratio: 1 / 1;
+            
+            --icon-color: var(--clr-neutral-100)
+
+        }
+
+        transition: 0.2s;
+
+        &.active {
+            scale: 1.1;
+        }
+
+    }
+
+}

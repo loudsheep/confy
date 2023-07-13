@@ -3,7 +3,7 @@ body {
     margin: var(--size-400);
 }
 
-.left-panel, .right-panel {
+.left-panel {
     
     display: flex;
     flex-direction: column;
@@ -11,8 +11,31 @@ body {
     margin-block: var(--size-500);
     gap: var(--size-500);
 
+    @media only screen and (max-width: 30em) {
+        display: none;
+    }
+
+}
+
+.right-panel {
+        
+    display: flex;
+    flex-direction: column;
+
+    margin-block: var(--size-500);
+    gap: var(--size-500);
+
+    @media only screen and (max-width: 60em) {
+        display: none;
+    }
+
 }
 
 .main-panel {
     
+    display: flex;
+    justify-content: center;
+
+    margin-block: var(--size-500);
+
 }

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
+import MobileNav from "../components/MobileNav";
 import GroupsPanel from "../components/GroupsPanel"; 
 import FriendsPanel from "../components/FriendsPanel"; 
+
 
 const Home = ({ auth, profile }) => {
 
@@ -34,7 +36,7 @@ const Home = ({ auth, profile }) => {
                     <GroupsPanel groups={groups}></GroupsPanel>
                 </section>
                 <main className='main-panel'>
-
+                    <MobileNav></MobileNav>
                 </main>
                 <section className='right-panel'>
                     <FriendsPanel friends={friends}></FriendsPanel>

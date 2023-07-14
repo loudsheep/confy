@@ -231,8 +231,6 @@ const Notification = ({ type = "notification", person, linkToPost = "", notifica
     const ConvertDate = (date) => {
         let now = Date.now();
         let time = Date.parse(date);
-
-        console.log(time.toString());
     }
 
     return (

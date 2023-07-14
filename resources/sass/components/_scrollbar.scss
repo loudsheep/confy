@@ -1,0 +1,19 @@
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--clr-primary-500) var(--clr-neutral-100);
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: var(--size-400);
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--clr-neutral-100);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--clr-primary-500);
+    border-radius: var(--size-500);
+    border: 3px solid var(--clr-neutral-100);
+  }

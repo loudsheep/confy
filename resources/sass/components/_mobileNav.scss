@@ -20,6 +20,8 @@
         background: var(--clr-primary-500);
 
         height: var(--size-800);
+        
+        z-index: -1;
 
         padding: var(--size-300) var(--size-700);
         border-radius: var(--size-500);

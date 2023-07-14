@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import Notifications from "../components/Notifcations";
 import Icon from "../components/Icon";
 
 const Menus = ({ profile }) => {
@@ -44,37 +45,6 @@ const Menus = ({ profile }) => {
             </div>
         </div>
     )
-}
-
-const Notifications = () => {
-    return (
-        <section className="notifications" id="notifications-menu" autoFocus>
-            <div className="notifications-heading">
-                <h2 className="fw-bold clr-neutral-500">Notifications</h2>
-                <div>
-                    <button>
-                        <Icon name="Filter_alt"></Icon>
-                    </button>
-                    <button>
-                        <Icon name="Meatballs_menu"></Icon>
-                    </button>
-                </div>
-            </div>
-            <ul role="list" aria-label="Notifications">
-                <NoNotifications />
-                {/* notifications */}
-            </ul>
-        </section>
-    )
-}
-
-const NoNotifications = () => {
-    return (
-        <div className="no-notifications">
-            <Icon name="Bell"></Icon>
-            <p className="fw-bold clr-neutral-500">You have no notifications</p>
-        </div>
-    );
 }
 
 const ProfileSettings = ({ profile }) => {

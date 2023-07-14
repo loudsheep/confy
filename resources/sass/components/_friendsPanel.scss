@@ -16,6 +16,10 @@
 
     .friends-list {
 
+        li:not(:last-child) {
+            margin-bottom: var(--size-500);
+        }
+
         .friend {
 
             display: flex;
@@ -38,7 +42,6 @@
             &:hover, &:focus-within {
                 background: var(--clr-neutral-200);
             }
-
         }
 
     }

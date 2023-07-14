@@ -16,6 +16,9 @@ const FriendsPanel = ({ friends = [] }) => {
     ></Friend>
     );
 
+    console.log(friends)
+    
+
     return (
         <div className='friends-panel'>
             <h2 className='fw-semibold fs-500 clr-neutral-500 panel-heading'>Friends</h2>

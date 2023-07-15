@@ -18,7 +18,6 @@ const Menus = ({ profile }) => {
         setShowProfile(!showProfile);
     };
     const onBlurProfile = () => {
-        console.log("blur")
         setShowProfile(!showProfile);
     };
     

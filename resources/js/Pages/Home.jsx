@@ -17,14 +17,6 @@ const Home = ({ auth, profile, friends }) => {
             link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
         }
     ];
-    // let friends = [
-    //     {
-    //         id : "2137",
-    //         avatar : "https://i.pravatar.cc/300",
-    //         name : "John Doe",
-    //         link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
-    //     }
-    // ];
 
     return (
         <>

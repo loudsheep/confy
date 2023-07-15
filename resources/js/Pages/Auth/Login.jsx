@@ -17,7 +17,6 @@ export default function Login({ status }) {
     }, []);
 
     const handleOnChange = (event) => {
-        console.log(event.target.type);
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 

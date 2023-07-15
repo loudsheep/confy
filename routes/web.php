@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,11 @@ use Inertia\Inertia;
 */
 
 Route::middleware(['web'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->middleware('web')->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
+
+    Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
 });
 
 

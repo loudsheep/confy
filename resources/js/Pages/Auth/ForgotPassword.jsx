@@ -18,8 +18,6 @@ export default function Login({ status }) {
         post(route('password.email'));
     };
 
-    console.log(status);
-
     return (
         <>
             {status}

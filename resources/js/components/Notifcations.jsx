@@ -42,31 +42,9 @@ const Notifications = ({ notifications }) => {
             isSeen: false,
             notificationTime: "2023-07-14T15:12:26.000000Z"
         },
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "2023-07-14T15:12:26.000000Z"
-        },
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "2023-07-14T15:12:26.000000Z"
-        },
-        
+
+
+
     ]
 
     let notificationsToDisplay = nont.map(n => <Notification
@@ -85,14 +63,16 @@ const Notifications = ({ notifications }) => {
                     <button>
                         <Icon name="Filter_alt"></Icon>
                     </button>
-                    <button>    
+                    <button>
                         <Icon name="Meatballs_menu"></Icon>
                     </button>
                 </div>
             </div>
-            <ul role="list" className="notifications-list" aria-label="Notifications">
-                {nont.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
-            </ul>
+            <div className="list-wrapper">
+                <ul role="list" className="notifications-list" aria-label="Notifications">
+                    {nont.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
+                </ul>
+            </div>
         </section>
     )
 }

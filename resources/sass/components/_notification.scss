@@ -14,9 +14,9 @@
 
 .notifications-list {
 
-    max-height: 30rem;
-
-    overflow: auto;
+    max-height: 20rem;
+    height: auto;
+    overflow-y: auto;
 
     li:not(:last-child) {
         margin-bottom: var(--size-500);
@@ -83,11 +83,12 @@
 
 .notification {
     display: flex;
-    
+
     align-items: center;
+    line-height: normal;
 
     width: fit-content;
-    height: 3.5rem;
+    height: 3.65rem;
     
     gap: var(--size-500);
 

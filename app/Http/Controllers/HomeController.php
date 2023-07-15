@@ -17,11 +17,17 @@ class HomeController extends Controller
 
         $friends = User::with('acceptedFriendsTo.profile')->find(Auth::user()->id)->toArray()["accepted_friends_to"];
         array_push($friends, ...User::with('acceptedFriendsFrom.profile')->find(Auth::user()->id)->toArray()["accepted_friends_from"]);
-        // dd($friends);
+        
+        // friends invited by user, and invites to user
+        // $pendingFriendsTo = Auth::user()->pendingFriendsTo;
+        $pendingFriendsFrom = Auth::user()->pendingFriendsFrom()->with('profile')->get();
+
+        // dd($pendingFriendsFrom->toArray());
 
         return Inertia::render('Home', [
             "profile" => Auth::user()->profile,
             "friends" => $friends,
+            "pendingFriendsRequests" => $pendingFriendsFrom->toArray(),
         ]);
     }
 }

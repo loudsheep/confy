@@ -61,7 +61,7 @@ export default function Register() {
                 {errors.avatar} <br /><br />
 
                 {data.avatar !== null && (
-                    <img src={URL.createObjectURL(data.avatar)} alt="" />
+                    <img src={URL.createObjectURL(data.avatar)} alt="" style={{ maxWidth: "200px", maxHeight: "200px" }} />
                 )}
 
                 <br />

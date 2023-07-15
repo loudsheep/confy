@@ -2,50 +2,98 @@ import React from "react";
 
 import Icon from "../components/Icon";
 
-const Notifications = ({ notifications }) => {
+const Notifications = ({ notifications, pendingFriendsRequests }) => {
+
+    const addPendingFriendsNotifications = () => {
+        let result = [];
+
+        pendingFriendsRequests.forEach(request => {
+            // console.log(request);
+            let r = {
+                type: "send_fr",
+                person: {
+                    first_name: request.profile.first_name,
+                    last_name: request.profile.last_name,
+                    username: request.name,
+                    profile_image: request.profile.profile_image,
+                },
+                linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+                isSeen: false,
+                notificationTime: request.pivot.created_at,
+            };
+
+            result.push(r);
+        });
+
+        return result;
+    };
 
     //test only
-    let nont = [
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "2023-07-14T15:12:26.000000Z"
-        },
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "2023-07-14T15:12:26.000000Z"
-        },
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "2023-07-14T15:12:26.000000Z"
-        },
+    // let nont = [
+    //     {
+    //         type: "accepted_fr",
+    //         person: {
+    //             first_name: "John",
+    //             last_name: "Snow",
+    //             username: "john_snow",
+    //             profile_image: "https://i.pravatar.cc/300",
+    //         },
+    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+    //         isSeen: false,
+    //         notificationTime: "2023-07-14T15:12:26.000000Z"
+    //     },
+    //     {
+    //         type: "accepted_fr",
+    //         person: {
+    //             first_name: "John",
+    //             last_name: "Snow",
+    //             username: "john_snow",
+    //             profile_image: "https://i.pravatar.cc/300",
+    //         },
+    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+    //         isSeen: false,
+    //         notificationTime: "2023-07-14T15:12:26.000000Z"
+    //     },
+    //     {
+    //         type: "accepted_fr",
+    //         person: {
+    //             first_name: "John",
+    //             last_name: "Snow",
+    //             username: "john_snow",
+    //             profile_image: "https://i.pravatar.cc/300",
+    //         },
+    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+    //         isSeen: false,
+    //         notificationTime: "2023-07-14T15:12:26.000000Z"
+    //     },
+    //     {
+    //         type: "accepted_fr",
+    //         person: {
+    //             first_name: "John",
+    //             last_name: "Snow",
+    //             username: "john_snow",
+    //             profile_image: "https://i.pravatar.cc/300",
+    //         },
+    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+    //         isSeen: false,
+    //         notificationTime: "2023-07-14T15:12:26.000000Z"
+    //     },
+    //     {
+    //         type: "accepted_fr",
+    //         person: {
+    //             first_name: "John",
+    //             last_name: "Snow",
+    //             username: "john_snow",
+    //             profile_image: "https://i.pravatar.cc/300",
+    //         },
+    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+    //         isSeen: false,
+    //         notificationTime: "2023-07-14T15:12:26.000000Z"
+    //     },
+        
+    // ];
 
-
-
-    ]
+    const nont = addPendingFriendsNotifications();
 
     let notificationsToDisplay = nont.map(n => <Notification
         type={n.type}

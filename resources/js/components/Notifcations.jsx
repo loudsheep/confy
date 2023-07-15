@@ -16,10 +16,10 @@ const Notifications = ({ notifications }) => {
             },
             linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
             isSeen: false,
-            notificationTime: "14.07.2023, 15:32:26"
+            notificationTime: "2023-07-14T15:12:26.000000Z"
         },
         {
-            type: "send_fr",
+            type: "accepted_fr",
             person: {
                 first_name: "John",
                 last_name: "Snow",
@@ -28,10 +28,10 @@ const Notifications = ({ notifications }) => {
             },
             linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
             isSeen: false,
-            notificationTime: "14.07.2023, 10:12:26"
+            notificationTime: "2023-07-14T15:12:26.000000Z"
         },
         {
-            type: "liked_post",
+            type: "accepted_fr",
             person: {
                 first_name: "John",
                 last_name: "Snow",
@@ -39,11 +39,11 @@ const Notifications = ({ notifications }) => {
                 profile_image: "https://i.pravatar.cc/300",
             },
             linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
+            isSeen: false,
+            notificationTime: "2023-07-14T15:12:26.000000Z"
         },
         {
-            type: "liked_post",
+            type: "accepted_fr",
             person: {
                 first_name: "John",
                 last_name: "Snow",
@@ -51,11 +51,11 @@ const Notifications = ({ notifications }) => {
                 profile_image: "https://i.pravatar.cc/300",
             },
             linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
+            isSeen: false,
+            notificationTime: "2023-07-14T15:12:26.000000Z"
         },
         {
-            type: "liked_post",
+            type: "accepted_fr",
             person: {
                 first_name: "John",
                 last_name: "Snow",
@@ -63,68 +63,8 @@ const Notifications = ({ notifications }) => {
                 profile_image: "https://i.pravatar.cc/300",
             },
             linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
+            isSeen: false,
+            notificationTime: "2023-07-14T15:12:26.000000Z"
         },
         
     ]
@@ -145,7 +85,7 @@ const Notifications = ({ notifications }) => {
                     <button>
                         <Icon name="Filter_alt"></Icon>
                     </button>
-                    <button>
+                    <button>    
                         <Icon name="Meatballs_menu"></Icon>
                     </button>
                 </div>

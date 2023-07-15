@@ -6,7 +6,7 @@ import MobileNav from "../components/MobileNav";
 import GroupsPanel from "../components/GroupsPanel"; 
 import FriendsPanel from "../components/FriendsPanel"; 
 
-const Home = ({ auth, profile, friends }) => {
+const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
 
     //test only
     let groups = [
@@ -20,7 +20,7 @@ const Home = ({ auth, profile, friends }) => {
 
     return (
         <>
-            <Header profile={profile}></Header>
+            <Header profile={profile} pendingFriendsRequests={pendingFriendsRequests}></Header>
             <div className='content'>
                 <section className='left-panel'>
                     <SideNav profile={profile}></SideNav>

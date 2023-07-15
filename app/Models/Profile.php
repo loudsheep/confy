@@ -21,6 +21,15 @@ class Profile extends Model
         'profile_image',
     ];
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
+    protected $hidden = [
+        'date_of_birth',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

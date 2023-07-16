@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
-import Header from "../components/Header";
-import SideNav from "../components/SideNav";
-import MobileNav from "../components/MobileNav";
-import GroupsPanel from "../components/GroupsPanel"; 
-import FriendsPanel from "../components/FriendsPanel"; 
+import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
+import MobileNav from "@/components/MobileNav";
+import GroupsPanel from "@/components/GroupsPanel"; 
+import FriendsPanel from "@/components/FriendsPanel"; 
+import GroupConversationsPanel from '@/components/GroupConversation';
 
 const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
 
@@ -31,6 +32,7 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
                 </main>
                 <section className='right-panel'>
                     <FriendsPanel friends={friends}></FriendsPanel>
+                    <GroupConversationsPanel></GroupConversationsPanel>
                 </section>
             </div>
         </>

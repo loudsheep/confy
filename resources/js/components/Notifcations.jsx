@@ -2,13 +2,12 @@ import React from "react";
 
 import Icon from "../components/Icon";
 
-const Notifications = ({ notifications, pendingFriendsRequests }) => {
+const Notifications = ({ pendingFriendsRequests }) => {
 
     const addPendingFriendsNotifications = () => {
         let result = [];
 
         pendingFriendsRequests.forEach(request => {
-            // console.log(request);
             let r = {
                 type: "send_fr",
                 person: {
@@ -28,74 +27,9 @@ const Notifications = ({ notifications, pendingFriendsRequests }) => {
         return result;
     };
 
-    //test only
-    // let nont = [
-    //     {
-    //         type: "accepted_fr",
-    //         person: {
-    //             first_name: "John",
-    //             last_name: "Snow",
-    //             username: "john_snow",
-    //             profile_image: "https://i.pravatar.cc/300",
-    //         },
-    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-    //         isSeen: false,
-    //         notificationTime: "2023-07-14T15:12:26.000000Z"
-    //     },
-    //     {
-    //         type: "accepted_fr",
-    //         person: {
-    //             first_name: "John",
-    //             last_name: "Snow",
-    //             username: "john_snow",
-    //             profile_image: "https://i.pravatar.cc/300",
-    //         },
-    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-    //         isSeen: false,
-    //         notificationTime: "2023-07-14T15:12:26.000000Z"
-    //     },
-    //     {
-    //         type: "accepted_fr",
-    //         person: {
-    //             first_name: "John",
-    //             last_name: "Snow",
-    //             username: "john_snow",
-    //             profile_image: "https://i.pravatar.cc/300",
-    //         },
-    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-    //         isSeen: false,
-    //         notificationTime: "2023-07-14T15:12:26.000000Z"
-    //     },
-    //     {
-    //         type: "accepted_fr",
-    //         person: {
-    //             first_name: "John",
-    //             last_name: "Snow",
-    //             username: "john_snow",
-    //             profile_image: "https://i.pravatar.cc/300",
-    //         },
-    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-    //         isSeen: false,
-    //         notificationTime: "2023-07-14T15:12:26.000000Z"
-    //     },
-    //     {
-    //         type: "accepted_fr",
-    //         person: {
-    //             first_name: "John",
-    //             last_name: "Snow",
-    //             username: "john_snow",
-    //             profile_image: "https://i.pravatar.cc/300",
-    //         },
-    //         linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-    //         isSeen: false,
-    //         notificationTime: "2023-07-14T15:12:26.000000Z"
-    //     },
-        
-    // ];
+    const notifications = addPendingFriendsNotifications();
 
-    const nont = addPendingFriendsNotifications();
-
-    let notificationsToDisplay = nont.map(n => <Notification
+    let notificationsToDisplay = notifications.map(n => <Notification
         type={n.type}
         person={n.person}
         linkToPost={n.linkToPost}
@@ -118,7 +52,7 @@ const Notifications = ({ notifications, pendingFriendsRequests }) => {
             </div>
             <div className="list-wrapper">
                 <ul role="list" className="notifications-list" aria-label="Notifications">
-                    {nont.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
+                    {notifications.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
                 </ul>
             </div>
         </section>

@@ -30,10 +30,10 @@ const GroupsPanel = ({ groups = [] }) => {
 const Group = ({ groupId = "-1", groupAvatar = "", groupName ="", groupLink = ""}) => {
     return (
         <li key={groupId}>
-            <a href={groupLink} className='item'>
+            <button className='item'>
                 <img className='profile-picture' src={groupAvatar} alt={groupName} />
                 <h3 className='fw-medium fs-500 item-name'>{groupName}</h3>
-            </a>
+            </button>
         </li>
     );
 }

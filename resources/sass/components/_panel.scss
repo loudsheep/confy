@@ -17,19 +17,27 @@
     .list {
 
         li:not(:last-child) {
-            margin-bottom: var(--size-500);
+            margin-bottom: var(--size-200);
         }
 
         .item {
 
+            cursor: pointer;
+
             display: flex;
             align-items: center;
     
+            width: 100%;
             gap: var(--size-500);
-    
+            padding: var(--size-300);
             border-radius: var(--size-500);
     
-            text-decoration: none;
+            background: none;
+            border: none;
+            
+            .profile-picture {
+                --width: var(--size-750);
+            }
 
             .item-name {
 
@@ -68,4 +76,30 @@
         --icon-color: var(--clr-neutral-500);
 
     }
+}
+
+.left-panel {
+
+    .panel {
+        @media only screen and (max-width: 80em) {
+            width: fit-content;
+            padding: var(--size-400);
+        }
+    }
+
+    .panel-heading {
+
+        @media only screen and (max-width: 80em) {
+            display: none;
+        }
+
+    }
+    .item-name {
+
+        @media only screen and (max-width: 80em) {
+            display: none;
+        }
+
+    }
+
 }

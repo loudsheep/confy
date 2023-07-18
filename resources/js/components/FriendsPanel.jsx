@@ -31,13 +31,13 @@ const FriendsPanel = ({ friends = [] }) => {
 }
 
 
-const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendLink = "", friendActive = false }) => {
+const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendActive = false }) => {
     return (
         <li key={friendId}>
-            <a href={friendLink} className='item'>
+            <button className='item'>
                 <img className='profile-picture' src={friendAvatar} alt={friendName} />
                 <h3 className='fw-medium fs-500 item-name' style={{ color: friendActive ? "lime" : null }}>{friendName}</h3>
-            </a>
+            </button>
         </li>
     );
 }

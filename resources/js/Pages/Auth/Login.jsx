@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Head, Link, useForm } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
 
 export default function Login({ status }) {
     // create empty form

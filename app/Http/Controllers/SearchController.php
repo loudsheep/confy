@@ -7,8 +7,12 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function searchUsers(Request $request, $searchTerm)
+    public function searchUsers(Request $request, $searchTerm = '')
     {
+        if (trim($searchTerm) == '') {
+            return [];
+        }
+
         return User::with('profile')
             ->where('name', 'LIKE', '%' . $searchTerm . '%')
             ->limit(10)

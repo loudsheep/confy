@@ -9,6 +9,7 @@ const SearchBar = () => {
     const [searchResults, setSearchResults] = useState([]);
 
     const [searchTerm, setSearchTerm] = useState('');
+    const [showLoader, setShowLoader] = useState(true);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -16,8 +17,9 @@ const SearchBar = () => {
         fetch(route('search.users', searchTerm)).then(res => {
             return res.json();
         }).then(json => {
+            setShowLoader(false);
             setSearchResults(json);
-        })
+        });  
     };
 
     const onClickSearch = () => {
@@ -57,13 +59,21 @@ const SearchBar = () => {
             </div>
             <div className="menu">
                 {showRecent ? <RecentSearch recent={searchResults} /> : null}
-
-                <div className="autocomplete-search">
-                    {/* to be made later */}
-                </div>
+                <SearchRes showLoader={showLoader}></SearchRes>
             </div>
         </div>
     )
+}
+
+const SearchRes = ({showLoader, searchResults}) => {
+    return (
+        <div className="autocomplete-search">
+            {/* {showLoader ? <Icon name="Loader"></Icon> : null} */}
+            <ul>
+
+            </ul>      
+        </div>
+    );
 }
 
 const RecentSearch = ({ recent }) => {
@@ -83,4 +93,4 @@ const RecentSearch = ({ recent }) => {
     )
 }
 
-export default SearchBar
+export default SearchBar;

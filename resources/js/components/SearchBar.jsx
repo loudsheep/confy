@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { useLocalStorage } from '../Hooks/useLocalStorage';
+import { router } from '@inertiajs/react'
 import Icon from "./Icon";
 import Loader from "./Loader";
 
@@ -56,11 +57,11 @@ const SearchBar = () => {
 
     const [showRecent, setShowRecent] = useState(false);
     const onFocusSearchbar = (e) => {
-        if(!e.target.value) {
+        if (!e.target.value) {
             setShowRecent(true);
         } else {
             setShowAutocomplete(true);
-            onChange(e);
+            // onChange(e);
         }
     }
     const onDefocusSeachbar = () => {
@@ -97,22 +98,29 @@ const SearchBar = () => {
 
 const AutocompleteSearch = ({ showLoader, searchResults = [] }) => {
 
-    console.log(searchResults);
+    const inviteFriend = (event, id) => {
+        event.preventDefault();
+
+        router.post(route('invite.friend', id));
+    };
 
     return (
         <div className="autocomplete-search">
             <ul role="list" className="search-list">
                 {searchResults.map((value, id) =>
-                    <li>
-                        <a href="" className="item">
+                    <li key={id}>
+                        <div className="item" onMouseDown={(e) => inviteFriend(e, value.id)}>
                             <div>
                                 <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
                             </div>
                             <div>
                                 <p className="fs-500 fw-medium clr-neutral-900">{value.name}</p>
                             </div>
-                        </a>
+                        </div>
                     </li>
+                )}
+                {searchResults.length == 0 && (
+                    <p>No results</p>
                 )}
             </ul>
         </div>
@@ -128,7 +136,7 @@ const RecentSearch = ({ recent = [] }) => {
                     {/* recently searched  */}
                     {/* change it, only here to check if it works */}
                     {recent.map((value, idx) => (
-                        <li>{value}</li>
+                        <li key={idx}>{value}</li>
                     ))}
                 </ul> : <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>}
         </div>

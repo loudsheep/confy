@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FriendsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
@@ -32,6 +33,8 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::post('/post/store', [PostController::class, 'store'])->name('post.store');
 
     Route::any('/search/users/{term?}', [SearchController::class, 'searchUsers'])->name('search.users');
+
+    Route::post('/invite/{user}', [FriendsController::class, 'invite'])->name('invite.friend');
 });
 
 

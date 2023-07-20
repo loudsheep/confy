@@ -13,8 +13,9 @@ class FriendsController extends Controller
             return back();
         }
 
-        // TODO check if user was invited by that user or user already invited that user
-        // TODO accepted to false on production
+        if ($request->user()->friendsTo->contains($user) || $user->friendsTo->contains($request->user())) {
+            return back();
+        }
 
         $request->user()->friendsTo()->attach($user, ['accepted' => true]);
 

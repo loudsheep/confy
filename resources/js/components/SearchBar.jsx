@@ -68,6 +68,7 @@ const SearchBar = () => {
         setShowRecent(false);
         setShowAutocomplete(false);
         setSearchResults([]);
+        setSearchTerm('');
     }
 
     return (

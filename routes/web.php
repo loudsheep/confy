@@ -39,8 +39,15 @@ Route::middleware(['auth', 'web'])->group(function () {
 
 
 Route::get('/gen-users', function () {
-    $user = User::factory()
-        ->has(Profile::factory()->count(1))
+    $f_name = fake()->firstName();
+    $l_name = fake()->lastName();
+    
+    $user = User::factory(1, ['name' => $f_name . ' ' . $l_name])
+        ->has(Profile::factory()
+            ->count(1)
+            ->state(function (array $attributes, User $user) use ($f_name, $l_name) {
+                return ['first_name' => $f_name, 'last_name' => $l_name];
+            }))
         ->create();
 
     echo "Random user generated";

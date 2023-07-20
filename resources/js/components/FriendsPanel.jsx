@@ -10,7 +10,7 @@ const FriendsPanel = ({ friends = [] }) => {
     const friendsToDisplay = friends.map(f => <Friend
         friendId={f.id}
         friendAvatar={f.profile.profile_image}
-        friendName={f.name}
+        friendName={f.profile.first_name + " " + f.profile.last_name}
         friendActive={Date.now() - Date.parse(f.last_seen) < 5 * 60 * 1000}
         friendLink={"dewde"}
     ></Friend>

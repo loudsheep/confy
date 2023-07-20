@@ -90,18 +90,21 @@ const SearchBar = () => {
     )
 }
 
-const AutocompleteSearch = ({ showLoader, searchResults }) => {
+const AutocompleteSearch = ({ showLoader, searchResults = []}) => {
+
+    console.log(searchResults);
+
     return (
         <div className="autocomplete-search">
-            <ul>
+            <ul role="list" className="search-list">
                 {searchResults.map((value, id) => {
                     <li>
                         <a href="" className="item">
                             <div>
-                                <img src={value.profile.profile_image} alt={value.name} />
+                                <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
                             </div>
                             <div>
-                                <p>{value.name}</p>
+                                <p className="fs-500 fw-medium">{value.name}</p>
                             </div>
                         </a>
                     </li>

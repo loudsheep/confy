@@ -97,19 +97,18 @@ const AutocompleteSearch = ({ showLoader, searchResults = [] }) => {
     return (
         <div className="autocomplete-search">
             <ul role="list" className="search-list">
-                {searchResults.map((value, id) => {
-                    return (
-                        <li>
-                            <a href="" className="item">
-                                <div>
-                                    <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
-                                </div>
-                                <div>
-                                    <p className="fs-500 fw-medium">{value.name}</p>
-                                </div>
-                            </a>
-                        </li>);
-                })}
+                {searchResults.map((value, id) =>
+                    <li>
+                        <a href="" className="item">
+                            <div>
+                                <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
+                            </div>
+                            <div>
+                                <p className="fs-500 fw-medium">{value.name}</p>
+                            </div>
+                        </a>
+                    </li>
+                )}
             </ul>
         </div>
     );

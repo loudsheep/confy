@@ -15,6 +15,7 @@ class SearchController extends Controller
 
         return User::with('profile')
             ->where('name', 'LIKE', '%' . $searchTerm . '%')
+            ->where('id', '<>', $request->user()->id)
             ->limit(10)
             ->get();
     }

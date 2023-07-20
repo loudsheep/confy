@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Posts;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -13,8 +14,10 @@ class PostTest extends TestCase
 
     public function test_post_creation_screen_can_be_rendered(): void
     {
-        $response = $this->get('/post/create');
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
+        $response = $this->get('/post/create');
         $response->assertStatus(200);
     }
 }

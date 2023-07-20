@@ -9,8 +9,10 @@
 @use '../sass/layouts/flex';
 @use '../sass/layouts/content';
 
-@use '../sass/components/groupsPanel';
-@use '../sass/components/friendsPanel';
+
+@use '../sass/components/panel';
+@use '../sass/components/searchBox';
+@use '../sass/components/groupConversationPanel';
 @use '../sass/components/notification';
 @use '../sass/components/sideNav';
 @use '../sass/components/mobileNav';

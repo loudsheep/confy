@@ -17,9 +17,9 @@ const FriendsPanel = ({ friends = [] }) => {
     );
 
     return (
-        <div className='friends-panel'>
+        <div className='panel'>
             <h2 className='fw-semibold fs-500 clr-neutral-500 panel-heading'>Friends</h2>
-            <ul className='friends-list' role='list'>
+            <ul className='list' role='list'>
                 {
                     friends.length != 0 ?
                         friendsToDisplay :
@@ -31,20 +31,20 @@ const FriendsPanel = ({ friends = [] }) => {
 }
 
 
-const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendLink = "", friendActive = false }) => {
+const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendActive = false }) => {
     return (
         <li key={friendId}>
-            <a href={friendLink} className='friend'>
+            <button className='item'>
                 <img className='profile-picture' src={friendAvatar} alt={friendName} />
-                <h3 className='fw-medium fs-500 friend-name' style={{ color: friendActive ? "lime" : null }}>{friendName}</h3>
-            </a>
+                <h3 className='fw-medium fs-500 item-name' style={{ color: friendActive ? "lime" : null }}>{friendName}</h3>
+            </button>
         </li>
     );
 }
 
 const NoFriends = () => {
     return (
-        <div className='no-friends'>
+        <div className='no-items'>
             <Icon name="Group"></Icon>
             <p className='fw-semibold fs-400 clr-neutral-500'>Friendless??</p>
         </div>

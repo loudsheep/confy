@@ -34,7 +34,7 @@ export default function CreatePost({ status }) {
             <br />
             <form onSubmit={submit}>
                 <textarea name="body" id="" cols="50" rows="20" placeholder='Post content' onChange={handleOnChange} value={data.body}></textarea><br />
-                {errors.email}
+                {errors.body}
                 <br /><br />
 
                 <input type="file" name="image" id="" onChange={handleImageUpload} />

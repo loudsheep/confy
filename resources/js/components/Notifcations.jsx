@@ -1,135 +1,35 @@
 import React from "react";
 
-import Icon from "../components/Icon";
+import Icon from "@/components/Icon";
 
-const Notifications = ({ notifications }) => {
+const Notifications = ({ pendingFriendsRequests }) => {
 
-    //test only
-    let nont = [
-        {
-            type: "accepted_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "14.07.2023, 15:32:26"
-        },
-        {
-            type: "send_fr",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            isSeen: false,
-            notificationTime: "14.07.2023, 10:12:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        {
-            type: "liked_post",
-            person: {
-                first_name: "John",
-                last_name: "Snow",
-                username: "john_snow",
-                profile_image: "https://i.pravatar.cc/300",
-            },
-            linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
-            wasSeen: false,
-            notificationTime: "14.07.2023, 8:48:26"
-        },
-        
-    ]
+    const addPendingFriendsNotifications = () => {
+        let result = [];
 
-    let notificationsToDisplay = nont.map(n => <Notification
+        pendingFriendsRequests.forEach(request => {
+            let r = {
+                type: "send_fr",
+                person: {
+                    first_name: request.profile.first_name,
+                    last_name: request.profile.last_name,
+                    username: request.name,
+                    profile_image: request.profile.profile_image,
+                },
+                linkToPost: "https://www.youtube.com/watch?v=ep761iSbrCI",
+                isSeen: false,
+                notificationTime: request.pivot.created_at,
+            };
+
+            result.push(r);
+        });
+
+        return result;
+    };
+
+    const notifications = addPendingFriendsNotifications();
+
+    let notificationsToDisplay = notifications.map(n => <Notification
         type={n.type}
         person={n.person}
         linkToPost={n.linkToPost}
@@ -150,9 +50,11 @@ const Notifications = ({ notifications }) => {
                     </button>
                 </div>
             </div>
-            <ul role="list" className="notifications-list" aria-label="Notifications">
-                {nont.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
-            </ul>
+            <div className="list-wrapper">
+                <ul role="list" className="notifications-list" aria-label="Notifications">
+                    {notifications.length != 0 ? notificationsToDisplay : <NoNotifications></NoNotifications>}
+                </ul>
+            </div>
         </section>
     )
 }

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Notifications from "../components/Notifcations";
 import Icon from "../components/Icon";
 
-const Menus = ({ profile }) => {
+const Menus = ({ profile, pendingFriendsRequests }) => {
     
     //show and hide notifications
     const [showNotifications, setShowNotifications] = useState(false);
@@ -39,7 +39,7 @@ const Menus = ({ profile }) => {
                 </button>
             </div>
             <div className="menu">
-                {showNotifications ? <Notifications></Notifications> : null}
+                {showNotifications ? <Notifications pendingFriendsRequests={pendingFriendsRequests}></Notifications> : null}
                 {showProfile ? <ProfileSettings profile={profile}></ProfileSettings> : null}
             </div>
         </div>

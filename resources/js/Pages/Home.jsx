@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-import Header from "../components/Header";
-import SideNav from "../components/SideNav";
-import MobileNav from "../components/MobileNav";
-import GroupsPanel from "../components/GroupsPanel"; 
-import FriendsPanel from "../components/FriendsPanel"; 
+import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
+import MobileNav from "@/components/MobileNav";
+import GroupsPanel from "@/components/GroupsPanel"; 
+import FriendsPanel from "@/components/FriendsPanel"; 
+import GroupConversationsPanel from '@/components/GroupConversation';
 
-const Home = ({ auth, profile, friends }) => {
+const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
 
     //test only
     let groups = [
@@ -20,7 +21,7 @@ const Home = ({ auth, profile, friends }) => {
 
     return (
         <>
-            <Header profile={profile}></Header>
+            <Header profile={profile} pendingFriendsRequests={pendingFriendsRequests}></Header>
             <div className='content'>
                 <section className='left-panel'>
                     <SideNav profile={profile}></SideNav>
@@ -31,6 +32,7 @@ const Home = ({ auth, profile, friends }) => {
                 </main>
                 <section className='right-panel'>
                     <FriendsPanel friends={friends}></FriendsPanel>
+                    <GroupConversationsPanel></GroupConversationsPanel>
                 </section>
             </div>
         </>

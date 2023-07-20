@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from '@inertiajs/react';
-import { useLocalStorage } from '../Hooks/useLocalstorage';
+import { useLocalStorage } from '../Hooks/useLocalStorage';
 import Icon from "./Icon";
 
 const SearchBar = () => {

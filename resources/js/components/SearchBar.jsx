@@ -55,8 +55,13 @@ const SearchBar = () => {
     const [showAutocomplete, setShowAutocomplete] = useState(false);
 
     const [showRecent, setShowRecent] = useState(false);
-    const onFocusSearchbar = () => {
-        setShowRecent(true);
+    const onFocusSearchbar = (e) => {
+        if(!e.target.value) {
+            setShowRecent(true);
+        } else {
+            setShowAutocomplete(true);
+            onChange(e);
+        }
     }
     const onDefocusSeachbar = () => {
         setShowRecent(false);

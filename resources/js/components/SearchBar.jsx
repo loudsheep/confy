@@ -1,26 +1,44 @@
 import React, { useState } from "react";
 import { useForm } from '@inertiajs/react';
 import Icon from "./Icon";
+import Loader from "./Loader";
 
 const SearchBar = () => {
 
     const [showSearch, setShowSearch] = useState(false);
 
     const [searchResults, setSearchResults] = useState([]);
-
     const [searchTerm, setSearchTerm] = useState('');
+
     const [showLoader, setShowLoader] = useState(true);
 
-    const onSubmit = (e) => {
-        e.preventDefault();
 
-        fetch(route('search.users', searchTerm)).then(res => {
+    // const onSubmit = (e) => {
+    //     e.preventDefault();
+
+    //     fetch(route('search.users', searchTerm)).then(res => {
+    //         return res.json();
+    //     }).then(json => {
+    //         setSearchResults(json);
+    //     });  
+    // };
+
+    const onChange = (e) => {
+
+        setShowRecent(false);
+        setShowAutocomplete(true);
+
+        setShowLoader(true);
+        setSearchTerm(e.target.value);
+
+        fetch(route('search.users', e.target.value)).then(res => {
             return res.json();
         }).then(json => {
             setShowLoader(false);
             setSearchResults(json);
-        });  
-    };
+        })
+
+    }
 
     const onClickSearch = () => {
         setShowSearch(!showSearch);
@@ -29,14 +47,15 @@ const SearchBar = () => {
         setShowSearch(false);
     }
 
+    const [showAutocomplete, setShowAutocomplete] = useState(false);
+
     const [showRecent, setShowRecent] = useState(false);
-    const onFocusDisplayRecent = (recent) => {
+    const onFocusSearchbar = () => {
         setShowRecent(true);
     }
-    const onDefocusHideRecent = (recent) => {
+    const onDefocusSeachbar = () => {
         setShowRecent(false);
-        setSearchResults([]);
-        setSearchTerm('');
+        setShowAutocomplete(false);
     }
 
     return (
@@ -48,46 +67,55 @@ const SearchBar = () => {
                     {showSearch ? <Icon name="Search_alt_fill"></Icon> : null}
                     {!showSearch ? <Icon name="Search_alt"></Icon> : null}
                 </button>
-                <form className="searchbar expand" data-expanded={showSearch} onSubmit={onSubmit}>
+                <form className="searchbar expand" data-expanded={showSearch}>
                     <Icon name="Search_alt"></Icon>
                     <input className="search-input" type="search" placeholder="Search Confy"
                         value={searchTerm}
-                        onFocus={onFocusDisplayRecent}
-                        onBlur={onDefocusHideRecent}
-                        onChange={(e) => setSearchTerm(e.target.value)} />
+                        onFocus={onFocusSearchbar}
+                        onBlur={onDefocusSeachbar}
+                        onChange={onChange} />
                 </form>
             </div>
             <div className="menu">
-                {showRecent ? <RecentSearch recent={searchResults} /> : null}
-                <SearchRes showLoader={showLoader}></SearchRes>
+                {showRecent ? <RecentSearch /> : null}
+                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults}></AutocompleteSearch> : null}
             </div>
         </div>
     )
 }
 
-const SearchRes = ({showLoader, searchResults}) => {
+const AutocompleteSearch = ({ showLoader, searchResults }) => {
     return (
         <div className="autocomplete-search">
-            {/* {showLoader ? <Icon name="Loader"></Icon> : null} */}
-            <ul>
-
-            </ul>      
+            <ul role="list" className="search-list">
+                {searchResults.map((value, id) => {
+                    <li key={id}>
+                        <a href="" className="item">
+                            <div>
+                                <img src={value.profile.profile_image} alt={value.name} />
+                            </div>
+                            <div>
+                                <p className="fs-500 fw-medium">{value.name}</p>
+                            </div>
+                        </a>
+                    </li>
+                })}
+            </ul>
         </div>
     );
 }
 
-const RecentSearch = ({ recent }) => {
+const RecentSearch = ({ recent = []}) => {
     return (
         <div className="recent-search">
             <h2 className="fw-bold clr-neutral-500">Recent</h2>
-            <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>
-            <ul role="list" className="recent">
-                {/* recently searched  */}
-                {/* change it, only here to check if it works */}
+            {recent.length != 0 ? <ul role="list" className="recent">
                 {recent.map((value, idx) => (
                     <li key={idx}><img src={value.profile.profile_image} alt="" style={{ maxHeight: "40px" }} />{value.name}</li>
                 ))}
-            </ul>
+            </ul> : <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>
+            }
+
         </div>
 
     )

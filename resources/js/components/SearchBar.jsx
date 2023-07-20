@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from '@inertiajs/react';
+import { useLocalStorage } from '../Hooks/useLocalstorage';
 import Icon from "./Icon";
 
 const SearchBar = () => {
-
     const [showSearch, setShowSearch] = useState(false);
 
-    const [searchResults, setSearchResults] = useState([]);
+    const [searchResults, setSearchResults] = useState(null);
+
+    const [recentSearches, setRecentSearches] = useLocalStorage('recentSearches', []);
 
     const [searchTerm, setSearchTerm] = useState('');
     const [showLoader, setShowLoader] = useState(true);
@@ -14,12 +16,16 @@ const SearchBar = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        // TODO add searchTerm to recentSearches and to localstorage
+        console.log([...recentSearches, searchTerm]);
+        setRecentSearches([...recentSearches, searchTerm]);
+
         fetch(route('search.users', searchTerm)).then(res => {
             return res.json();
         }).then(json => {
             setShowLoader(false);
             setSearchResults(json);
-        });  
+        });
     };
 
     const onClickSearch = () => {
@@ -35,7 +41,7 @@ const SearchBar = () => {
     }
     const onDefocusHideRecent = (recent) => {
         setShowRecent(false);
-        setSearchResults([]);
+        setSearchResults(null);
         setSearchTerm('');
     }
 
@@ -58,20 +64,29 @@ const SearchBar = () => {
                 </form>
             </div>
             <div className="menu">
-                {showRecent ? <RecentSearch recent={searchResults} /> : null}
-                <SearchRes showLoader={showLoader}></SearchRes>
+                {showRecent ? <RecentSearch recent={recentSearches} /> : null}
+                <SearchRes showLoader={showLoader} searchResults={searchResults}></SearchRes>
             </div>
         </div>
     )
 }
 
-const SearchRes = ({showLoader, searchResults}) => {
+const SearchRes = ({ showLoader, searchResults }) => {
     return (
         <div className="autocomplete-search">
-            {/* {showLoader ? <Icon name="Loader"></Icon> : null} */}
             <ul>
-
-            </ul>      
+                {/* change it, only here to check if it works */}
+                {Array.isArray(searchResults) && (
+                    <>
+                        {searchResults.map((value, idx) => (
+                            <li key={idx}><img src={value.profile.profile_image} alt="" style={{ maxHeight: "40px" }} />{value.name}</li>
+                        ))}
+                    </>
+                )}
+                {(Array.isArray(searchResults) && searchResults.length == 0) && (
+                    <p>No profiles found</p>
+                )}
+            </ul>
         </div>
     );
 }
@@ -80,12 +95,13 @@ const RecentSearch = ({ recent }) => {
     return (
         <div className="recent-search">
             <h2 className="fw-bold clr-neutral-500">Recent</h2>
-            <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>
+            {recent.length == 0 && (
+                <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>
+            )}
             <ul role="list" className="recent">
                 {/* recently searched  */}
-                {/* change it, only here to check if it works */}
                 {recent.map((value, idx) => (
-                    <li key={idx}><img src={value.profile.profile_image} alt="" style={{ maxHeight: "40px" }} />{value.name}</li>
+                    <li>{value}</li>
                 ))}
             </ul>
         </div>

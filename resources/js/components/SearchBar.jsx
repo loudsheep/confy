@@ -12,26 +12,16 @@ const SearchBar = () => {
     const [recentSearches, setRecentSearches] = useLocalStorage('recentSearches', []);
 
     const [searchTerm, setSearchTerm] = useState('');
-
     const [showLoader, setShowLoader] = useState(true);
 
+    const [showAutocomplete, setShowAutocomplete] = useState(false);
+    const [showRecent, setShowRecent] = useState(false);
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        // TODO add searchTerm to recentSearches and to localstorage
-        console.log([...recentSearches, searchTerm]);
-        setRecentSearches([...recentSearches, searchTerm]);
-
-        fetch(route('search.users', searchTerm)).then(res => {
-            return res.json();
-        }).then(json => {
-            setSearchResults(json);
-        });
+    const addToRecentHistory = () => {
+        setRecentSearches([searchTerm, ...recentSearches]);
     };
 
     const onChange = (e) => {
-
         setShowRecent(false);
         setShowAutocomplete(true);
 
@@ -53,9 +43,6 @@ const SearchBar = () => {
         setShowSearch(false);
     }
 
-    const [showAutocomplete, setShowAutocomplete] = useState(false);
-
-    const [showRecent, setShowRecent] = useState(false);
     const onFocusSearchbar = (e) => {
         if (!e.target.value) {
             setShowRecent(true);
@@ -91,17 +78,18 @@ const SearchBar = () => {
             </div>
             <div className="menu">
                 {showRecent ? <RecentSearch recent={recentSearches} /> : null}
-                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults}></AutocompleteSearch> : null}
+                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults} addToRecentHistory={addToRecentHistory}></AutocompleteSearch> : null}
             </div>
         </div>
     )
 }
 
-const AutocompleteSearch = ({ showLoader, searchResults = [] }) => {
+const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory }) => {
 
-    const inviteFriend = (event, id) => {
+    const onClick = (event, id) => {
         event.preventDefault();
 
+        addToRecentHistory();
         router.post(route('invite.friend', id));
     };
 
@@ -110,7 +98,7 @@ const AutocompleteSearch = ({ showLoader, searchResults = [] }) => {
             <ul role="list" className="search-list">
                 {searchResults.map((value, id) =>
                     <li key={id}>
-                        <div className="item" onMouseDown={(e) => inviteFriend(e, value.id)}>
+                        <div className="item" onMouseDown={(e) => onClick(e, value.id)}>
                             <div>
                                 <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
                             </div>
@@ -135,7 +123,6 @@ const RecentSearch = ({ recent = [] }) => {
             {recent.length != 0 ?
                 <ul role="list" className="recent">
                     {/* recently searched  */}
-                    {/* change it, only here to check if it works */}
                     {recent.map((value, idx) => (
                         <li key={idx}>{value}</li>
                     ))}

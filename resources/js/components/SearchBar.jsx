@@ -4,12 +4,13 @@ import { useLocalStorage } from '../Hooks/useLocalStorage';
 import { router } from '@inertiajs/react'
 import Icon from "./Icon";
 import Loader from "./Loader";
+import { useRecentSearches } from "@/Hooks/useRecentSearches";
 
 const SearchBar = () => {
     const [showSearch, setShowSearch] = useState(false);
 
     const [searchResults, setSearchResults] = useState([]);
-    const [recentSearches, setRecentSearches] = useLocalStorage('recentSearches', []);
+    const [recentSearches, addRecentSearch] = useRecentSearches();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [showLoader, setShowLoader] = useState(true);
@@ -18,7 +19,7 @@ const SearchBar = () => {
     const [showRecent, setShowRecent] = useState(false);
 
     const addToRecentHistory = () => {
-        setRecentSearches([searchTerm, ...recentSearches]);
+        addRecentSearch(searchTerm);
     };
 
     const onChange = (e) => {

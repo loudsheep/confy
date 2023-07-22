@@ -95,7 +95,7 @@ const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory
         event.preventDefault();
 
         let term = searchResults.find(user => user.id == id);
-        
+
         addToRecentHistory(term);
         router.post(route('invite.friend', id));
     };
@@ -105,14 +105,14 @@ const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory
             <ul role="list" className="search-list">
                 {searchResults.map((value, id) =>
                     <li key={id}>
-                        <div className="item" onMouseDown={(e) => onClick(e, value.id)}>
+                        <a className="item" onMouseDown={(e) => onClick(e, value.id)}>
                             <div>
                                 <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
                             </div>
                             <div>
                                 <p className="fs-500 fw-medium clr-neutral-900">{value.name}</p>
                             </div>
-                        </div>
+                        </a>
                     </li>
                 )}
                 {searchResults.length == 0 && (
@@ -124,22 +124,39 @@ const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory
 }
 
 const RecentSearch = ({ recent = [] }) => {
+
+    const onClick = (e, id) => {
+        e.preventDefault();
+
+        //delete from recent search
+    }
+
     return (
         <div className="recent-search">
             <h2 className="fw-bold clr-neutral-500">Recent</h2>
             {recent.length != 0 ?
                 <ul role="list" className="recent">
-                    {/* recently searched  */}
-                    {recent.map((value, idx) => (
-                        <li key={idx}>
-                            <div className="item">
-                                <div>
-
-                                </div>
-                                <div>
-
-                                </div>
-                            </div>
+                    {recent.map((value, id) => (
+                        <li key={id}>
+                            <a className="item">
+                                {
+                                    typeof value === "object" ?
+                                        <>
+                                            <div>
+                                                <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
+                                            </div>
+                                            <div className="item-name">
+                                                <p className="fs-500 fw-medium clr-neutral-900">{value.name}</p>
+                                            </div>
+                                        </> :
+                                        <div className="term-search item-name">
+                                            <p className="fs-500 fw-medium clr-neutral-900">{value}</p>
+                                        </div>
+                                }
+                                <button className="delete-recent" onMouseDown={(e) => onClick(e, id)}>
+                                    <Icon name="Close_round"></Icon>
+                                </button>
+                            </a>
                         </li>
                     ))}
                 </ul> : <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>}

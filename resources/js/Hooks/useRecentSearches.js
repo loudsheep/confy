@@ -15,7 +15,7 @@ export function useRecentSearches(maxLength = 10) {
 
         setRecent(r);
     }
-
+ 
     return [
         recent,
         addRecent

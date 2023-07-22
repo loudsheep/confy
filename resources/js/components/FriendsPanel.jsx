@@ -7,10 +7,11 @@ const FriendsPanel = ({ friends = [] }) => {
 
     // this checks when friend has last updated its active status,
     // if it is below 5 minutes ago then a friend is considered active
-    const friendsToDisplay = friends.map(f => <Friend
+    const friendsToDisplay = friends.map((f, idx) => <Friend
+        key={idx}
         friendId={f.id}
         friendAvatar={f.profile.profile_image}
-        friendName={f.name}
+        friendName={f.profile.first_name + " " + f.profile.last_name}
         friendActive={Date.now() - Date.parse(f.last_seen) < 5 * 60 * 1000}
         friendLink={"dewde"}
     ></Friend>

@@ -1,32 +1,47 @@
 import React, { useState } from "react";
-import { useForm } from '@inertiajs/react';
+import { Link, useForm } from '@inertiajs/react';
 import { useLocalStorage } from '../Hooks/useLocalStorage';
+import { router } from '@inertiajs/react'
 import Icon from "./Icon";
+import Loader from "./Loader";
+import { useRecentSearches } from "@/Hooks/useRecentSearches";
 
 const SearchBar = () => {
     const [showSearch, setShowSearch] = useState(false);
 
-    const [searchResults, setSearchResults] = useState(null);
-
-    const [recentSearches, setRecentSearches] = useLocalStorage('recentSearches', []);
+    const [searchResults, setSearchResults] = useState([]);
+    const [recentSearches, addRecentSearch, deleteRecent] = useRecentSearches();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [showLoader, setShowLoader] = useState(true);
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const [showAutocomplete, setShowAutocomplete] = useState(false);
+    const [showRecent, setShowRecent] = useState(false);
 
-        // TODO add searchTerm to recentSearches and to localstorage
-        console.log([...recentSearches, searchTerm]);
-        setRecentSearches([...recentSearches, searchTerm]);
+    const addToRecentHistory = (term = searchTerm) => {
+        if(searchTerm) {
+            addRecentSearch(term);
+        }
+    };
 
-        fetch(route('search.users', searchTerm)).then(res => {
+    const onChange = (e) => {
+        setShowRecent(false);
+        setShowAutocomplete(true);
+
+        setShowLoader(true);
+        setSearchTerm(e.target.value);
+
+        fetch(route('search.users', e.target.value)).then(res => {
             return res.json();
         }).then(json => {
             setShowLoader(false);
             setSearchResults(json);
         });
     };
+
+    const onSubmit = () => {
+        addToRecentHistory();
+    }
 
     const onClickSearch = () => {
         setShowSearch(!showSearch);
@@ -35,13 +50,18 @@ const SearchBar = () => {
         setShowSearch(false);
     }
 
-    const [showRecent, setShowRecent] = useState(false);
-    const onFocusDisplayRecent = (recent) => {
-        setShowRecent(true);
+    const onFocusSearchbar = (e) => {
+        if (!e.target.value) {
+            setShowRecent(true);
+        } else {
+            setShowAutocomplete(true);
+            // onChange(e);
+        }
     }
-    const onDefocusHideRecent = (recent) => {
+    const onDefocusSeachbar = () => {
         setShowRecent(false);
-        setSearchResults(null);
+        setShowAutocomplete(false);
+        setSearchResults([]);
         setSearchTerm('');
     }
 
@@ -58,52 +78,91 @@ const SearchBar = () => {
                     <Icon name="Search_alt"></Icon>
                     <input className="search-input" type="search" placeholder="Search Confy"
                         value={searchTerm}
-                        onFocus={onFocusDisplayRecent}
-                        onBlur={onDefocusHideRecent}
-                        onChange={(e) => setSearchTerm(e.target.value)} />
+                        onFocus={onFocusSearchbar}
+                        onBlur={onDefocusSeachbar}
+                        onChange={onChange} />
                 </form>
             </div>
             <div className="menu">
-                {showRecent ? <RecentSearch recent={recentSearches} /> : null}
-                <SearchRes showLoader={showLoader} searchResults={searchResults}></SearchRes>
+                {showRecent ? <RecentSearch recent={recentSearches} deleteFromRecentHistory={deleteRecent} /> : null}
+                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults} addToRecentHistory={addToRecentHistory} deleteFromRecentHistory={deleteRecent}></AutocompleteSearch> : null}
             </div>
         </div>
     )
 }
 
-const SearchRes = ({ showLoader, searchResults }) => {
+const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory, deleteFromRecentHistory }) => {
+
+    const onClick = (event, id) => {
+        event.preventDefault();
+
+        let term = searchResults.find(user => user.id == id);
+
+        addToRecentHistory(term);
+        router.post(route('invite.friend', id));
+    };
+
     return (
         <div className="autocomplete-search">
-            <ul>
-                {/* change it, only here to check if it works */}
-                {Array.isArray(searchResults) && (
-                    <>
-                        {searchResults.map((value, idx) => (
-                            <li key={idx}><img src={value.profile.profile_image} alt="" style={{ maxHeight: "40px" }} />{value.name}</li>
-                        ))}
-                    </>
+            <ul role="list" className="search-list">
+                {searchResults.map((value, id) =>
+                    <li key={id}>
+                        <a className="item" onMouseDown={(e) => onClick(e, value.id)}>
+                            <div>
+                                <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
+                            </div>
+                            <div>
+                                <p className="fs-500 fw-medium clr-neutral-900">{value.name}</p>
+                            </div>
+                        </a>
+                    </li>
                 )}
-                {(Array.isArray(searchResults) && searchResults.length == 0) && (
-                    <p>No profiles found</p>
+                {searchResults.length == 0 && (
+                    <p>No results</p>
                 )}
             </ul>
         </div>
     );
 }
 
-const RecentSearch = ({ recent }) => {
+const RecentSearch = ({ recent = [] , deleteFromRecentHistory}) => {
+
+    const onClick = (e, id) => {
+        e.preventDefault();
+
+        //delete from recent search
+        deleteFromRecentHistory(id)
+    }
+
     return (
         <div className="recent-search">
             <h2 className="fw-bold clr-neutral-500">Recent</h2>
-            {recent.length == 0 && (
-                <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>
-            )}
-            <ul role="list" className="recent">
-                {/* recently searched  */}
-                {recent.map((value, idx) => (
-                    <li>{value}</li>
-                ))}
-            </ul>
+            {recent.length != 0 ?
+                <ul role="list" className="recent">
+                    {recent.map((value, id) => (
+                        <li key={id}>
+                            <a className="item">
+                                {
+                                    typeof value === "object" ?
+                                        <>
+                                            <div>
+                                                <img className="profile-picture" src={value.profile.profile_image} alt={value.name} />
+                                            </div>
+                                            <div className="item-name">
+                                                <p className="fs-500 fw-medium clr-neutral-900">{value.name}</p>
+                                            </div>
+                                        </> :
+                                        <div className="term-search item-name">
+                                            <p className="fs-500 fw-medium clr-neutral-900">{value}</p>
+                                        </div>
+                                }
+                                <button className="delete-recent" onMouseDown={(e) => onClick(e, id)}>
+                                    <Icon name="Close_round"></Icon>
+                                </button>
+                            </a>
+                        </li>
+                    ))}
+                </ul> : <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>}
         </div>
 
     )

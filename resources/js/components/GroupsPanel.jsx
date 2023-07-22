@@ -4,12 +4,13 @@ import Icon from "../components/Icon";
 
 const GroupsPanel = ({ groups = [] }) => {
 
-    const groupsToDisplay = groups.map(g => <Group 
-        groupId={g.id} 
+    const groupsToDisplay = groups.map((g, idx) => <Group
+        key={idx}
+        groupId={g.id}
         groupAvatar={g.avatar}
         groupName={g.name}
         groupLink={g.link}
-        ></Group>
+    ></Group>
     );
 
     return (
@@ -27,7 +28,7 @@ const GroupsPanel = ({ groups = [] }) => {
 }
 
 
-const Group = ({ groupId = "-1", groupAvatar = "", groupName ="", groupLink = ""}) => {
+const Group = ({ groupId = "-1", groupAvatar = "", groupName = "", groupLink = "" }) => {
     return (
         <li key={groupId}>
             <button className='item'>

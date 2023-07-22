@@ -367,6 +367,63 @@
     box-shadow: 0px 8px 20px -10px var(--clr-other-box-shadow);
 
     .recent {
-        list-style-type: square;
+        list-style-type: none;
+
+        li:not(:last-child) {
+            margin-bottom: var(--size-200);
+        }
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+    
+            cursor: pointer;
+    
+            min-height: var(--size-800);
+            text-decoration: none;
+            
+    
+            gap: var(--size-500);
+            padding: var(--size-300);
+            border-radius: var(--size-500);
+
+            .item-name {
+                flex-grow: 1;
+            }
+            
+            .profile-picture {
+                --width: var(--size-750)
+            }
+
+            .delete-recent {
+                
+                z-index: 5;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                border: none;
+                border-radius: 100vw;
+                padding: var(--size-200);
+
+                &:hover, &:focus {
+                    background: var(--clr-neutral-300);
+                }
+
+                .icon {
+                    width: var(--size-500);
+                    aspect-ratio: 1 / 1;
+
+                    --icon-color: var(--clr-neutral-900);
+                }
+            }
+    
+            &:hover, &:focus {
+                background: var(--clr-neutral-200);
+            }
+        }
+
     }
 }

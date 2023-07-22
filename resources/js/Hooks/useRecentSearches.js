@@ -15,9 +15,20 @@ export function useRecentSearches(maxLength = 10) {
 
         setRecent(r);
     }
+
+    const deleteRecent = (id) => {
+        let r = recent;
+        if(r[id] != undefined) {
+            r.splice(id, 1);
+        }
+        r = [...r];
+
+        setRecent(r);
+    }
  
     return [
         recent,
-        addRecent
+        addRecent,
+        deleteRecent
     ];
 }

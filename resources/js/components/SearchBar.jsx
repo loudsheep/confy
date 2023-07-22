@@ -10,7 +10,7 @@ const SearchBar = () => {
     const [showSearch, setShowSearch] = useState(false);
 
     const [searchResults, setSearchResults] = useState([]);
-    const [recentSearches, addRecentSearch] = useRecentSearches();
+    const [recentSearches, addRecentSearch, deleteRecent] = useRecentSearches();
 
     const [searchTerm, setSearchTerm] = useState('');
     const [showLoader, setShowLoader] = useState(true);
@@ -19,7 +19,9 @@ const SearchBar = () => {
     const [showRecent, setShowRecent] = useState(false);
 
     const addToRecentHistory = (term = searchTerm) => {
-        addRecentSearch(term);
+        if(searchTerm) {
+            addRecentSearch(term);
+        }
     };
 
     const onChange = (e) => {
@@ -82,14 +84,14 @@ const SearchBar = () => {
                 </form>
             </div>
             <div className="menu">
-                {showRecent ? <RecentSearch recent={recentSearches} /> : null}
-                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults} addToRecentHistory={addToRecentHistory}></AutocompleteSearch> : null}
+                {showRecent ? <RecentSearch recent={recentSearches} deleteFromRecentHistory={deleteRecent} /> : null}
+                {showAutocomplete ? <AutocompleteSearch showLoader={showLoader} searchResults={searchResults} addToRecentHistory={addToRecentHistory} deleteFromRecentHistory={deleteRecent}></AutocompleteSearch> : null}
             </div>
         </div>
     )
 }
 
-const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory }) => {
+const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory, deleteFromRecentHistory }) => {
 
     const onClick = (event, id) => {
         event.preventDefault();
@@ -123,12 +125,13 @@ const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory
     );
 }
 
-const RecentSearch = ({ recent = [] }) => {
+const RecentSearch = ({ recent = [] , deleteFromRecentHistory}) => {
 
     const onClick = (e, id) => {
         e.preventDefault();
 
         //delete from recent search
+        deleteFromRecentHistory(id)
     }
 
     return (

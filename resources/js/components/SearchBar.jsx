@@ -18,8 +18,8 @@ const SearchBar = () => {
     const [showAutocomplete, setShowAutocomplete] = useState(false);
     const [showRecent, setShowRecent] = useState(false);
 
-    const addToRecentHistory = () => {
-        addRecentSearch(searchTerm);
+    const addToRecentHistory = (term = searchTerm) => {
+        addRecentSearch(term);
     };
 
     const onChange = (e) => {
@@ -36,6 +36,10 @@ const SearchBar = () => {
             setSearchResults(json);
         });
     };
+
+    const onSubmit = () => {
+        addToRecentHistory();
+    }
 
     const onClickSearch = () => {
         setShowSearch(!showSearch);
@@ -68,7 +72,7 @@ const SearchBar = () => {
                     {showSearch ? <Icon name="Search_alt_fill"></Icon> : null}
                     {!showSearch ? <Icon name="Search_alt"></Icon> : null}
                 </button>
-                <form className="searchbar expand" data-expanded={showSearch}>
+                <form className="searchbar expand" data-expanded={showSearch} onSubmit={onSubmit}>
                     <Icon name="Search_alt"></Icon>
                     <input className="search-input" type="search" placeholder="Search Confy"
                         value={searchTerm}
@@ -90,7 +94,9 @@ const AutocompleteSearch = ({ showLoader, searchResults = [], addToRecentHistory
     const onClick = (event, id) => {
         event.preventDefault();
 
-        addToRecentHistory();
+        let term = searchResults.find(user => user.id == id);
+        
+        addToRecentHistory(term);
         router.post(route('invite.friend', id));
     };
 
@@ -125,7 +131,16 @@ const RecentSearch = ({ recent = [] }) => {
                 <ul role="list" className="recent">
                     {/* recently searched  */}
                     {recent.map((value, idx) => (
-                        <li key={idx}>{value}</li>
+                        <li key={idx}>
+                            <div className="item">
+                                <div>
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </li>
                     ))}
                 </ul> : <p className="fw-regular clr-neutral-500 fs-400">No recent searches</p>}
         </div>

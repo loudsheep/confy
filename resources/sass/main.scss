@@ -10,6 +10,9 @@
 @use '../sass/layouts/content';
 
 
+@use '../sass/components/button';
+@use '../sass/components/link';
+@use '../sass/components/input';
 @use '../sass/components/panel';
 @use '../sass/components/searchBox';
 @use '../sass/components/groupConversationPanel';
@@ -22,4 +25,5 @@
 @use '../sass/components/scrollbar';
 
 @use '../sass/pages/home';
+@use '../sass/pages/login';
 

@@ -1,0 +1,26 @@
+.btn {
+    height: var(--size-800);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    background: var(--clr-primary-500);
+    
+    color: var(--clr-neutral-100);
+    font-size: var(--fs-500);
+    font-weight: var(--fw-bold);
+
+    border-radius: var(--size-500);
+
+    text-decoration: none;
+    
+    &:focus, &:hover {
+        scale: 1.05;
+    }
+
+    transition: 0.2s;
+
+}

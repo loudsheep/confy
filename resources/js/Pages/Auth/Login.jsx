@@ -14,9 +14,9 @@ export default function Login({ status }) {
 
     // clear password filed on page rerender
     useEffect(() => {
-        return () => {
+        // return () => {
             reset('password');
-        };
+        // };
     }, []);
 
     const [showLoader, setShowLoader] = useState(false);
@@ -30,7 +30,11 @@ export default function Login({ status }) {
         e.preventDefault();
 
         setShowLoader(true);
-        post(route('login'));
+        post(route('login'), {
+            onError: () => {
+                reset('password')
+            }
+        });
 
         if (errors) {
             setShowLoader(false);
@@ -64,7 +68,7 @@ export default function Login({ status }) {
                             <div className={`input ${passwordErrors}`}>
                                 <Icon name="Key_fill"></Icon>
                                 <input type="password" name='password'
-                                    placeholder={!errors.password ? "Password" : "Wrong Password"}
+                                    placeholder={errors.password ?? "Password" }
                                     onChange={handleOnChange}
                                     value={data.password} />
                             </div>

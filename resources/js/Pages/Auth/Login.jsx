@@ -32,7 +32,7 @@ export default function Login({ status }) {
         setShowLoader(true);
         post(route('login'));
 
-        if(errors) {
+        if (errors) {
             setShowLoader(false);
         }
     };
@@ -41,7 +41,7 @@ export default function Login({ status }) {
     let passwordErrors = errors.password ? "error" : "";
 
     return (
-        <>
+        <div className='login-page'>
             <div className='login-content'>
                 <div className='slogan | column'>
                     <Logo></Logo>
@@ -78,8 +78,8 @@ export default function Login({ status }) {
                             <button className='btn' type="submit">
                                 {
                                     showLoader ?
-                                    <Loader></Loader> :
-                                    <p>Log In</p>
+                                        <Loader></Loader> :
+                                        <p>Log In</p>
                                 }
                             </button>
                         </form>
@@ -88,6 +88,6 @@ export default function Login({ status }) {
                     <a className='btn' href={route('register')}>Register instead</a>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

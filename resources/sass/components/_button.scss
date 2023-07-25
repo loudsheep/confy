@@ -1,4 +1,9 @@
 .btn {
+
+    .loader-dots {
+        --loader-color: var(--clr-neutral-100); 
+    }
+
     height: var(--size-800);
 
     display: flex;

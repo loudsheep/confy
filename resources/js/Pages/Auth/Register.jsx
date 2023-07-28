@@ -1,6 +1,9 @@
 import { useEffect } from 'react';
 import { useForm } from '@inertiajs/react';
 
+import Logo from '@/components/Logo';
+import Icon from '@/components/Icon';
+
 export default function Register() {
     // create empty form
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -36,40 +39,44 @@ export default function Register() {
     };
 
     return (
-        <>
-            TODO more fields: first_name, last_name, date_of_birth, profile_image, profile_description, etc.
-            <form onSubmit={submit}>
-                <input type="text" name="first_name" placeholder={"First name"} onChange={handleOnChange} />    <br />
-                {errors.first_name} <br /><br />
-
-                <input type="text" name="last_name" placeholder={"Last name"} onChange={handleOnChange} />    <br />
-                {errors.last_name} <br /><br />
-
-                <input type="date" name="date_of_birth" placeholder={"date of birth"} onChange={handleOnChange} />    <br />
-                {errors.date_of_birth} <br /><br />
-
-                <input type="email" name="email" placeholder={"email"} onChange={handleOnChange} />    <br />
-                {errors.email} <br /><br />
-
-                <input type="password" name="password" placeholder={"password"} onChange={handleOnChange} />    <br />
-                {errors.password} <br /><br />
-
-                <input type="password" name="password_confirmation" placeholder={"password_confirmation"} onChange={handleOnChange} /> <br />
-                {errors.password_confirmation} <br /><br />
-
-                <input type="file" name="avatar" id="" onChange={handleFileUpload} /> <br />
-                {errors.avatar} <br /><br />
-
-                {data.avatar !== null && (
-                    <img src={URL.createObjectURL(data.avatar)} alt="" style={{ maxWidth: "200px", maxHeight: "200px" }} />
-                )}
-
-                <br />
-
-                <input type="submit" value="Register" />
-            </form>
-
-            <a href={route('login')}>Login instead</a>
-        </>
+        <div className='register-page'>
+            <div className='register-content'>
+                <div className='slogan | column'>
+                    <Logo></Logo>
+                    <p className='fw-semibold fs-800 clr-neutral-500'>A place designed for conversations.</p>
+                </div>
+                <div className="register | column">
+                    <div>
+                        <h1 className='fw-bold fs-800 clr-neutral-800'>Create your own account!</h1>
+                        <p className='fw-regular fs-400 clr-neutral-500'>Register to continue</p>
+                    </div>
+                    <div>
+                        <form onSubmit={submit} className='register-form'>
+                            <section className='section'>
+                                <h2>Personal Info</h2>
+                                <div className='flex flex-column gap-500'>
+                                    <div className='flex space-between gap-500'>
+                                        <div className="input">
+                                            <Icon name="User_alt_fill"></Icon>
+                                            <input type="text" name='first_name' placeholder='First Name'
+                                                size={5} />
+                                        </div>
+                                        <div className="input">
+                                            <Icon name="User_alt_fill"></Icon>
+                                            <input type="text" name='last_name' placeholder='Last Name'
+                                                size={5} />
+                                        </div>
+                                    </div>
+                                    <div className="input">
+                                        <Icon name="User_alt_fill"></Icon>
+                                        <input type="email" name='email' placeholder='Email' />
+                                    </div>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 }

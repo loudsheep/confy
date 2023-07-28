@@ -20,4 +20,10 @@ $sizes: (
     @each $size, $value in $sizes {
         --size-#{$size}: #{$value};
     }
+
+    @each $size, $value in $sizes {
+        .gap-#{$size} {
+            gap: #{$value};
+        }
+    }
 }

@@ -5,20 +5,23 @@
     
     align-items: center;
     justify-content: center;
-
-    background: var(--clr-neutral-200);
 }
 
 .column {
-    width: 25rem;
+    width: min(25rem, 100%);
 }
 
 .login-content {
     display: flex;
 
-    align-items: center;
+    margin: var(--size-600);
 
-    gap: var(--size-750);
+    align-items: center;
+    gap: min(var(--size-750), var(--size-600));
+
+    @media only screen and (max-width: 60em) {
+        flex-direction: column;
+    }
 }
 
 .slogan {
@@ -30,6 +33,15 @@
 
     .logo {
         width: 20rem;
+
+        &[data-type="full"] {
+            display: block;
+        }
+
+        &[data-type="icon"] {
+            display: none;
+        }
+
     }
 }
 

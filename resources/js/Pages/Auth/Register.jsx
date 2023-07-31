@@ -41,7 +41,24 @@ export default function Register() {
 
     //generate dropdown data
 
-    let days = Array.from({length: 31}, (_, i) => i + 1);
+    const days = Array.from({ length: 31 }, (_, i) => i + 1);
+    const months = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December'
+    ];
+    let currentYear = new Date().getFullYear();
+    const years = Array.from({ length: (currentYear - 1905 + 1) }, (_, i) => i + 1905).reverse();
+
 
     return (
         <div className='register-page'>
@@ -58,36 +75,62 @@ export default function Register() {
                     <div>
                         <form onSubmit={submit} className='register-form'>
                             <section className='section'>
-                                <h2>Personal Info</h2>
+                                <h2 className='fw-semibold'>Personal Info</h2>
                                 <div className='flex flex-column gap-500'>
                                     <div className='flex space-between gap-500'>
                                         <div className="input">
                                             <Icon name="User_alt_fill"></Icon>
                                             <input type="text" name='first_name' placeholder='First Name'
-                                                size={5} />
+                                                size={5} onChange={handleOnChange} />
                                         </div>
                                         <div className="input">
                                             <Icon name="User_alt_fill"></Icon>
                                             <input type="text" name='last_name' placeholder='Last Name'
-                                                size={5} />
+                                                size={5} onChange={handleOnChange} />
                                         </div>
                                     </div>
                                     <div className="input">
-                                        <Icon name="User_alt_fill"></Icon>
-                                        <input type="email" name='email' placeholder='Email' />
+                                        <Icon name="Message_alt_fill"></Icon>
+                                        <input type="email" name='email' placeholder='Email'
+                                            onChange={handleOnChange} />
                                     </div>
                                 </div>
                             </section>
                             <section className='section'>
-                                <h2>Birthday</h2>
+                                <h2 className='fw-semibold'>Birthday</h2>
                                 <div className='flex space-between gap-500'>
                                     <Dropdown name="Day" options={days}></Dropdown>
-                                    <Dropdown name="Month" options={[]}></Dropdown>
-                                    <Dropdown name="Year" options={[]}></Dropdown>
+                                    <Dropdown name="Month" options={months}></Dropdown>
+                                    <Dropdown name="Year" options={years}></Dropdown>
                                 </div>
+                            </section>
+                            <section className="section">
+                                <h2 className='fw-semibold'>Password</h2>
+                                <div className="input">
+                                    <Icon name="Key_fill"></Icon>
+                                    <input type="password" name='password' placeholder='Password'
+                                        onChange={handleOnChange} />
+                                </div>
+                                <div className="input">
+                                    <Icon name="Key_fill"></Icon>
+                                    <input type="password" name='password_confirmation' placeholder='Repeat Password'
+                                        onChange={handleOnChange} />
+                                </div>
+                            </section>
+                            <section className="section">
+                                <div>
+                                    <input className='checkbox' type="checkbox" name="terms" id="terms-checkbox"
+                                        onChange={handleOnChange} />
+                                    <label htmlFor="terms-checkbox" checked={data.remember}>I do accept the <a href="" className="link">Terms and Conditions</a></label>
+                                </div>
+                            </section>
+                            <section className='section'>
+                                <input className='btn' type="submit" value="Register" />
                             </section>
                         </form>
                     </div>
+                    <div className="line"></div>
+                    <a href={route('login')} className="btn">Login instead</a>
                 </div>
             </div>
         </div>

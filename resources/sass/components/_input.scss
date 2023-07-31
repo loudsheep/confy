@@ -161,13 +161,16 @@
 
     .dropdown-menu {
 
+        z-index: 5;
+
         position: absolute;
 
         &[data-expanded="false"] {
             display: none;
         }
 
-        width: 100%;
+        min-width: 100%;
+        width: auto;
 
         margin-block-start: var(--size-300);
         padding: var(--size-300);

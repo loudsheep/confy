@@ -1,11 +1,17 @@
+body:has(.login-page) {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+
 .login-page {
-    height: 90vh;
 
     display: flex;
     
     align-items: center;
     justify-content: center;
-    
+
     .column {
         width: min(25rem, 100%);
     }

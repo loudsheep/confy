@@ -3,6 +3,7 @@ import { useForm } from '@inertiajs/react';
 
 import Logo from '@/components/Logo';
 import Icon from '@/components/Icon';
+import Dropdown from '@/components/Dropdown';
 
 export default function Register() {
     // create empty form
@@ -38,6 +39,10 @@ export default function Register() {
         post(route('register'));
     };
 
+    //generate dropdown data
+
+    let days = Array.from({length: 31}, (_, i) => i + 1);
+
     return (
         <div className='register-page'>
             <div className='register-content'>
@@ -71,6 +76,14 @@ export default function Register() {
                                         <Icon name="User_alt_fill"></Icon>
                                         <input type="email" name='email' placeholder='Email' />
                                     </div>
+                                </div>
+                            </section>
+                            <section className='section'>
+                                <h2>Birthday</h2>
+                                <div className='flex space-between gap-500'>
+                                    <Dropdown name="Day" options={days}></Dropdown>
+                                    <Dropdown name="Month" options={[]}></Dropdown>
+                                    <Dropdown name="Year" options={[]}></Dropdown>
                                 </div>
                             </section>
                         </form>

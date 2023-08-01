@@ -14,7 +14,8 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
-        avatar: null,
+        terms: false,
+        // avatar: null,
     });
 
     // clear password filed on page rerender
@@ -35,9 +36,12 @@ export default function Register() {
     // submit the form, do not reload, and send data to login controller
     const submit = (e) => {
         e.preventDefault();
+        console.log("SUBMIT FORM");
 
         post(route('register'));
     };
+
+    console.log(errors);
 
     //generate dropdown data
 
@@ -81,18 +85,18 @@ export default function Register() {
                                         <div className="input">
                                             <Icon name="User_alt_fill"></Icon>
                                             <input type="text" name='first_name' placeholder='First Name'
-                                                size={5} onChange={handleOnChange} />
+                                                size={5} onChange={handleOnChange} value={data.first_name} />
                                         </div>
                                         <div className="input">
                                             <Icon name="User_alt_fill"></Icon>
                                             <input type="text" name='last_name' placeholder='Last Name'
-                                                size={5} onChange={handleOnChange} />
+                                                size={5} onChange={handleOnChange} value={data.last_name} />
                                         </div>
                                     </div>
                                     <div className="input">
                                         <Icon name="Message_alt_fill"></Icon>
                                         <input type="email" name='email' placeholder='Email'
-                                            onChange={handleOnChange} />
+                                            onChange={handleOnChange} value={data.email} />
                                     </div>
                                 </div>
                             </section>
@@ -109,18 +113,18 @@ export default function Register() {
                                 <div className="input">
                                     <Icon name="Key_fill"></Icon>
                                     <input type="password" name='password' placeholder='Password'
-                                        onChange={handleOnChange} />
+                                        onChange={handleOnChange} value={data.password} />
                                 </div>
                                 <div className="input">
                                     <Icon name="Key_fill"></Icon>
                                     <input type="password" name='password_confirmation' placeholder='Repeat Password'
-                                        onChange={handleOnChange} />
+                                        onChange={handleOnChange} value={data.password_confirmation} />
                                 </div>
                             </section>
                             <section className="section">
                                 <div>
                                     <input className='checkbox' type="checkbox" name="terms" id="terms-checkbox"
-                                        onChange={handleOnChange} />
+                                        onChange={handleOnChange} value={data.terms}/>
                                     <label htmlFor="terms-checkbox" checked={data.remember}>I do accept the <a href="" className="link">Terms and Conditions</a></label>
                                 </div>
                             </section>

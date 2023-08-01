@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -36,9 +37,10 @@ class RegisterController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'date_of_birth' => 'required|date',
+            // 'date_of_birth' => 'required|date',
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'terms' => ['accepted'],
             'avatar' => ['image', 'mimes:png,jpg,bmp', 'nullable'],
         ]);
 
@@ -54,8 +56,6 @@ class RegisterController extends Controller
             $profile_image = "/storage/" . $profile_image;
         }
 
-        // dd($profile_image);
-
         $user = User::create([
             'name' => $request->first_name . " " . $request->last_name,
             'email' => $request->email,
@@ -66,7 +66,8 @@ class RegisterController extends Controller
         $user->profile()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'date_of_birth' => $request->date_of_birth,
+            'date_of_birth' => Carbon::today(),
+            // 'date_of_birth' => $request->date_of_birth,
             'profile_image' => $profile_image,
         ]);
 

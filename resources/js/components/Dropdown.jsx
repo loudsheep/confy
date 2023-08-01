@@ -17,7 +17,8 @@ const Dropdown = ({ name = "", options = [] }) => {
         setDisplay(e.target.getAttribute("data-value"));
     }
 
-    const expandMenu = () => {
+    const expandMenu = (e) => {
+        e.preventDefault();
         setExpanded(!expanded);
     }
 
@@ -27,12 +28,11 @@ const Dropdown = ({ name = "", options = [] }) => {
         }
     }
 
-    let generateOptions = options.map(
-        (o, id) =>
-            <li key={id} tabIndex={id} className="dropdown-item" data-value={o} onClick={(e) => setDropdownValue(e)}>
-                {o}
-            </li>
-    )
+    let generateOptions = options.map((o, id) => (
+        <li key={id} tabIndex={id} className="dropdown-item" data-value={o} onClick={(e) => setDropdownValue(e)}>
+            {o}
+        </li>
+    ));
 
     return (
         <div className='dropdown-wrapper' onMouseLeave={(e) => onBlur(e)}>

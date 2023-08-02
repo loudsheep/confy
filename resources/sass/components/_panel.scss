@@ -50,6 +50,29 @@
             &:hover, &:focus-within {
                 background: var(--clr-neutral-200);
             }
+
+            // special classes
+
+            .friend-display {
+                position: relative;
+                
+                .active {
+                    position: absolute;
+
+                    bottom: -2px;
+                    right: -2px;
+
+                    width: var(--size-450);
+                    height: var(--size-450);
+
+                    border-radius: var(--size-500);
+
+                    background: var(--clr-other-active);
+                    border: 2px solid var(--clr-neutral-100);
+                    
+                }
+
+            }
         }
 
     }

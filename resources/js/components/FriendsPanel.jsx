@@ -36,8 +36,11 @@ const Friend = ({ friendId = "-1", friendAvatar = "", friendName = "", friendAct
     return (
         <li key={friendId}>
             <button className='item'>
-                <img className='profile-picture' src={friendAvatar} alt={friendName} />
-                <h3 className='fw-medium fs-500 item-name' style={{ color: friendActive ? "lime" : null }}>{friendName}</h3>
+                <div className='friend-display'>
+                    <img className='profile-picture' src={friendAvatar} alt={friendName} />
+                    <div className={`${friendActive ? "active" : "a"}`}></div>
+                </div>
+                <h3 className='fw-medium fs-500 item-name'>{friendName}</h3>
             </button>
         </li>
     );

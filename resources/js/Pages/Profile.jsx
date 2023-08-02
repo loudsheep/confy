@@ -1,46 +1,43 @@
-import { useEffect } from 'react';
-import { Head, useForm } from '@inertiajs/react';
+import React, { useState } from 'react';
 
-export default function ResetPassword({ token, email }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        token: token,
-        email: email,
-        password: '',
-        password_confirmation: '',
-    });
+import Header from "@/components/Header";
+import SideNav from "@/components/SideNav";
+import MobileNav from "@/components/MobileNav";
+import GroupsPanel from "@/components/GroupsPanel"; 
+import FriendsPanel from "@/components/FriendsPanel"; 
+import GroupConversationsPanel from '@/components/GroupConversation';
 
-    useEffect(() => {
-        return () => {
-            reset('password', 'password_confirmation');
-        };
-    }, []);
-
-    const onHandleChange = (event) => {
-        setData(event.target.name, event.target.value);
-    };
-
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route('password.store'));
-    };
+const Profile = ({ auth, profile, friends, pendingFriendsRequests }) => {
+    
+    //test only
+    let groups = [
+        {
+            id : "2137",
+            avatar : "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+            name : "Nature",
+            link : "https://www.youtube.com/watch?v=_hb0L2t3P3Y&t=1068s"
+        }
+    ];
 
     return (
         <>
-
-            <form onSubmit={submit}>
-
-                    <input type="text" name="email" id="" placeholder='email' value={data.email} onChange={onHandleChange}/><br />
-                    {errors.email} <br />
-
-                    <input type="text" name="password" id="" placeholder='password' value={data.password} onChange={onHandleChange}/><br />
-                    {errors.password} <br />
-
-                    <input type="text" name="password_confirmation" id="" placeholder='password_confirmation' value={data.password_confirmation} onChange={onHandleChange}/><br />
-                    {errors.password_confirmation} <br /><br />
-
-                    <input type="submit" value="Send" />
-            </form>
+            <Header profile={profile} pendingFriendsRequests={pendingFriendsRequests}></Header>
+            <div className='content'>
+                <section className='left-panel'>
+                    <SideNav profile={profile}></SideNav>
+                    <GroupsPanel groups={groups}></GroupsPanel>
+                </section>
+                <main className='main-panel'>
+                    <MobileNav></MobileNav>
+                    {/* profile page */}
+                </main>
+                <section className='right-panel'>
+                    <FriendsPanel friends={friends}></FriendsPanel>
+                    <GroupConversationsPanel></GroupConversationsPanel>
+                </section>
+            </div>
         </>
-    );
+    )
 }
+
+export default Profile;

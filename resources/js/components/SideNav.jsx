@@ -13,7 +13,7 @@ const SideNav = ({profile}) => {
                     </a>
                 </li>
                 <li>
-                    <a href="" className='nav-item'>
+                    <a href={`profile?id=${profile.id}`} className='nav-item'>
                         <img className='profile-picture' src={profile.profile_image} alt="" />
                         <h2 className='fw-semibold fs-500 | nav-item-header'>{profile.first_name + " " + profile.last_name}</h2>
                     </a>

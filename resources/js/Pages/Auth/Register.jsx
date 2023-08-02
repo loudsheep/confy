@@ -18,6 +18,8 @@ export default function Register() {
         // avatar: null,
     });
 
+    console.log(errors)
+
     // clear password filed on page rerender
     useEffect(() => {
         return () => {
@@ -99,6 +101,27 @@ export default function Register() {
                                             onChange={handleOnChange} value={data.email} />
                                     </div>
                                 </div>
+                                {
+                                    errors.first_name ?
+                                    <p className='error-text'>
+                                        {errors.first_name}
+                                    </p> :
+                                    ""
+                                }
+                                                                {
+                                    errors.last_name ?
+                                    <p className='error-text'>
+                                        {errors.last_name}
+                                    </p> :
+                                    ""
+                                }
+                                                                {
+                                    errors.email ?
+                                    <p className='error-text'>
+                                        {errors.email}
+                                    </p> :
+                                    ""
+                                }
                             </section>
                             <section className='section'>
                                 <h2 className='fw-semibold'>Birthday</h2>
@@ -120,6 +143,13 @@ export default function Register() {
                                     <input type="password" name='password_confirmation' placeholder='Repeat Password'
                                         onChange={handleOnChange} value={data.password_confirmation} />
                                 </div>
+                                {
+                                    errors.password ?
+                                    <p className='error-text'>
+                                        {errors.password}
+                                    </p> :
+                                    ""
+                                }
                             </section>
                             <section className="section">
                                 <div>
@@ -127,6 +157,13 @@ export default function Register() {
                                         onChange={handleOnChange} value={data.terms}/>
                                     <label htmlFor="terms-checkbox" checked={data.remember}>I do accept the <a href="" className="link">Terms and Conditions</a></label>
                                 </div>
+                                {
+                                    errors.terms ?
+                                    <p className='error-text'>
+                                        {errors.terms}
+                                    </p> :
+                                    ""
+                                }
                             </section>
                             <section className='section'>
                                 <input className='btn' type="submit" value="Register" />

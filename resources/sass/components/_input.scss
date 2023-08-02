@@ -229,6 +229,13 @@
     animation: shake 0.3s ease-in-out;
 }
 
+.error-text {
+    color: var(--clr-other-error);
+    animation: shake 0.3s ease-in-out;
+
+    font-size: var(--fs-300);
+}
+
 @keyframes shake {
     25% {
         transform: translateX(4px);

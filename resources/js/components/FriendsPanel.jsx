@@ -17,6 +17,10 @@ const FriendsPanel = ({ friends = [] }) => {
     ></Friend>
     );
 
+    friendsToDisplay.sort(function (x, y) {
+        return (x === y)? 0 : x? -1 : 1;
+    })
+
     return (
         <div className='panel'>
             <h2 className='fw-semibold fs-500 clr-neutral-500 panel-heading'>Friends</h2>

@@ -192,6 +192,7 @@
             overflow-y: auto;
 
             .dropdown-item {
+                cursor: pointer;
 
                 padding-inline: var(--size-300);
                 padding-block: var(--size-200);

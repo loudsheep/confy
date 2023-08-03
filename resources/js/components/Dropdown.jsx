@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import Icon from '@/components/Icon';
 
-const Dropdown = ({ name = "", options = [] }) => {
+const Dropdown = ({ name = "", options = [], setData = (value) => { } }) => {
 
     const [display, setDisplay] = useState(name.charAt(0).toUpperCase() + name.toLowerCase().slice(1));
     let localName = name.toLowerCase();
@@ -15,6 +15,9 @@ const Dropdown = ({ name = "", options = [] }) => {
     const setDropdownValue = (e) => {
         setValue(e.target.getAttribute("data-value"));
         setDisplay(e.target.getAttribute("data-value"));
+
+        setData(e.target.getAttribute("data-value"));
+        console.log(e.target.getAttribute("data-value"));
     }
 
     const expandMenu = (e) => {
@@ -29,7 +32,7 @@ const Dropdown = ({ name = "", options = [] }) => {
     }
 
     let generateOptions = options.map((o, id) => (
-        <li key={id} tabIndex={id} className="dropdown-item" data-value={o} onClick={(e) => setDropdownValue(e)}>
+        <li key={id} tabIndex={id} className="dropdown-item" data-value={o} onClick={setDropdownValue}>
             {o}
         </li>
     ));

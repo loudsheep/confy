@@ -10,12 +10,15 @@ export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         first_name: '',
         last_name: '',
-        date_of_birth: '',
+        // date_of_birth: '',
         email: '',
         password: '',
         password_confirmation: '',
         terms: false,
         // avatar: null,
+        day: '',
+        month: '',
+        year: '',
     });
 
     console.log(errors)
@@ -65,7 +68,6 @@ export default function Register() {
     let currentYear = new Date().getFullYear();
     const years = Array.from({ length: (currentYear - 1905 + 1) }, (_, i) => i + 1905).reverse();
 
-
     return (
         <div className='register-page'>
             <div className='register-content'>
@@ -103,32 +105,32 @@ export default function Register() {
                                 </div>
                                 {
                                     errors.first_name ?
-                                    <p className='error-text'>
-                                        {errors.first_name}
-                                    </p> :
-                                    ""
+                                        <p className='error-text'>
+                                            {errors.first_name}
+                                        </p> :
+                                        ""
                                 }
-                                                                {
+                                {
                                     errors.last_name ?
-                                    <p className='error-text'>
-                                        {errors.last_name}
-                                    </p> :
-                                    ""
+                                        <p className='error-text'>
+                                            {errors.last_name}
+                                        </p> :
+                                        ""
                                 }
-                                                                {
+                                {
                                     errors.email ?
-                                    <p className='error-text'>
-                                        {errors.email}
-                                    </p> :
-                                    ""
+                                        <p className='error-text'>
+                                            {errors.email}
+                                        </p> :
+                                        ""
                                 }
                             </section>
                             <section className='section'>
                                 <h2 className='fw-semibold'>Birthday</h2>
                                 <div className='flex space-between gap-500'>
-                                    <Dropdown name="Day" options={days}></Dropdown>
-                                    <Dropdown name="Month" options={months}></Dropdown>
-                                    <Dropdown name="Year" options={years}></Dropdown>
+                                    <Dropdown name="Day" options={days} setData={(value) => setData('day', value)}></Dropdown>
+                                    <Dropdown name="Month" options={months} setData={(value) => setData('month', value)}></Dropdown>
+                                    <Dropdown name="Year" options={years} setData={(value) => setData('year', value)}></Dropdown>
                                 </div>
                             </section>
                             <section className="section">
@@ -145,24 +147,24 @@ export default function Register() {
                                 </div>
                                 {
                                     errors.password ?
-                                    <p className='error-text'>
-                                        {errors.password}
-                                    </p> :
-                                    ""
+                                        <p className='error-text'>
+                                            {errors.password}
+                                        </p> :
+                                        ""
                                 }
                             </section>
                             <section className="section">
                                 <div>
                                     <input className='checkbox' type="checkbox" name="terms" id="terms-checkbox"
-                                        onChange={handleOnChange} value={data.terms}/>
+                                        onChange={handleOnChange} value={data.terms} />
                                     <label htmlFor="terms-checkbox" checked={data.remember}>I do accept the <a href="" className="link">Terms and Conditions</a></label>
                                 </div>
                                 {
                                     errors.terms ?
-                                    <p className='error-text'>
-                                        {errors.terms}
-                                    </p> :
-                                    ""
+                                        <p className='error-text'>
+                                            {errors.terms}
+                                        </p> :
+                                        ""
                                 }
                             </section>
                             <section className='section'>

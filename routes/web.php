@@ -35,6 +35,8 @@ Route::middleware(['auth', 'web'])->group(function () {
     Route::any('/search/users/{term?}', [SearchController::class, 'searchUsers'])->name('search.users');
 
     Route::post('/invite/{user}', [FriendsController::class, 'invite'])->name('invite.friend');
+
+    Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile');
 });
 
 

@@ -37,11 +37,13 @@ class RegisterController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            // 'date_of_birth' => 'required|date',
+            'day' => ['required', 'numeric', 'min:1', 'max:31'],
+            'month' => ['required'],
+            'year' => ['required', 'numeric', 'max:2023'],
             'email' => 'required|string|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'terms' => ['accepted'],
-            'avatar' => ['image', 'mimes:png,jpg,bmp', 'nullable'],
+            // 'avatar' => ['image', 'mimes:png,jpg,bmp', 'nullable'],
         ]);
 
 
@@ -56,18 +58,18 @@ class RegisterController extends Controller
             $profile_image = "/storage/" . $profile_image;
         }
 
+        $date_of_birth = new Carbon($request->day . " " . $request->month . " " . $request->year);
+
         $user = User::create([
             'name' => $request->first_name . " " . $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-
         $user->profile()->create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
-            'date_of_birth' => Carbon::today(),
-            // 'date_of_birth' => $request->date_of_birth,
+            'date_of_birth' => $date_of_birth,
             'profile_image' => $profile_image,
         ]);
 

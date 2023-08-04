@@ -49,7 +49,7 @@ const Menus = ({ profile, pendingFriendsRequests }) => {
 const ProfileSettings = ({ profile }) => {
     return (
         <div className="profile-settings | fw-semibold" id="profile-menu" autoFocus>
-            <a href={`profile?id=${profile.id}`} className="menu-item">
+            <a href={route("profile", profile.id)} className="menu-item">
                 <img className="profile-picture" src={profile.profile_image} alt="Profile Image" />
                 <p id="username" aria-description="username">{profile.first_name + " " + profile.last_name}</p>
             </a>

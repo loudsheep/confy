@@ -19,8 +19,11 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
         }
     ];
 
+    console.log(profile, friends, pendingFriendsRequests)
+
+
     return (
-        <>
+        <div className='home-page'>
             <Header profile={profile} pendingFriendsRequests={pendingFriendsRequests}></Header>
             <div className='content'>
                 <section className='left-panel'>
@@ -35,7 +38,7 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
                     <GroupConversationsPanel></GroupConversationsPanel>
                 </section>
             </div>
-        </>
+        </div>
     )
 }
 

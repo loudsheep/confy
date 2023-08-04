@@ -3,39 +3,59 @@ body {
     margin: var(--size-400);
 }
 
-.left-panel {
+.home-page {
+
+    .content {
+        display: grid;
+        grid-template-columns: min(18.75rem, 30%) auto min(18.75rem, 30%);
     
-    display: flex;
-    flex-direction: column;
-
-    margin-block: var(--size-500);
-    gap: var(--size-500);
-
-    @media only screen and (max-width: 30em) {
-        display: none;
+        @media only screen and (max-width: 80em) {
+            grid-template-columns: 4rem auto min(18.75rem, 30%);
+        }
+    
+        @media only screen and (max-width: 60em) {
+            grid-template-columns: max(4rem, 10%) auto;
+        }
+    
+        @media only screen and (max-width: 30em) {
+            grid-template-columns: auto;
+        }
     }
 
-}
+    .left-panel {
 
-.right-panel {
-        
-    display: flex;
-    flex-direction: column;
+        display: flex;
+        flex-direction: column;
 
-    margin-block: var(--size-500);
-    gap: var(--size-500);
+        margin-block: var(--size-500);
+        gap: var(--size-500);
 
-    @media only screen and (max-width: 60em) {
-        display: none;
+        @media only screen and (max-width: 30em) {
+            display: none;
+        }
+
     }
 
-}
+    .right-panel {
 
-.main-panel {
-    
-    display: flex;
-    justify-content: center;
+        display: flex;
+        flex-direction: column;
 
-    margin-block: var(--size-500);
+        margin-block: var(--size-500);
+        gap: var(--size-500);
 
+        @media only screen and (max-width: 60em) {
+            display: none;
+        }
+
+    }
+
+    .main-panel {
+
+        display: flex;
+        justify-content: center;
+
+        margin-block: var(--size-500);
+
+    }
 }

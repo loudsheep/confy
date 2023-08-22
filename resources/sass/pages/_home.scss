@@ -1,12 +1,19 @@
 body {
     background-color: var(--clr-neutral-200);
-    margin: var(--size-400);
+    padding: var(--size-400);
+
+    overflow: hidden;
+
 }
 
 .home-page {
 
+    display: flex;
+    flex-direction: column;
+
     .content {
         display: grid;
+
         grid-template-columns: min(18.75rem, 30%) auto min(18.75rem, 30%);
     
         @media only screen and (max-width: 80em) {
@@ -27,7 +34,8 @@ body {
         display: flex;
         flex-direction: column;
 
-        margin-block: var(--size-500);
+        padding-block: var(--size-500);
+
         gap: var(--size-500);
 
         @media only screen and (max-width: 30em) {
@@ -41,7 +49,8 @@ body {
         display: flex;
         flex-direction: column;
 
-        margin-block: var(--size-500);
+        padding-block: var(--size-500);
+
         gap: var(--size-500);
 
         @media only screen and (max-width: 60em) {
@@ -51,11 +60,22 @@ body {
     }
 
     .main-panel {
-
+        
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
 
-        margin-block: var(--size-500);
+        overflow: auto;
 
+        max-height: calc(100vh - (4 * var(--size-500)));
+
+        padding-block: var(--size-500);
+
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 }

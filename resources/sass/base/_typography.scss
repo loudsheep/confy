@@ -11,6 +11,7 @@ $font-sizes: (
     '100' : $base-size * 0.625,
     '300' : $base-size * 0.75,
     '400' : $base-size * 0.825,
+    '450' : $base-size * 0.9,
     '500' : $base-size * 1,
     '700' : $base-size * 1.25,
     '800' : $base-size * 1.5,
@@ -54,5 +55,14 @@ body {
 }
 
 button {
+    font-family: #{$ff-primary} !important;
+}
+
+input {
+    font-family: #{$ff-primary} !important;
+}
+
+
+em-emoji-picker {
     font-family: #{$ff-primary} !important;
 }

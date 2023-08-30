@@ -7,7 +7,7 @@ const SideNav = ({profile}) => {
     let isProfile = location.pathname.includes("/profile");
 
     return (
-        <div className='side-nav'>
+        <div className='side-nav | box-shadow'>
             <ul className='nav' role='list'>
                 <li>
                     <a href="/" className={`nav-item ${!isProfile ? "active" : ""}`}>

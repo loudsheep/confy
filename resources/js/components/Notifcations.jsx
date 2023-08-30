@@ -38,7 +38,7 @@ const Notifications = ({ pendingFriendsRequests }) => {
     </Notification>);
 
     return (
-        <section className="notifications" id="notifications-menu" autoFocus>
+        <section className="notifications | box-shadow" id="notifications-menu" autoFocus>
             <div className="notifications-heading">
                 <h2 className="fw-bold clr-neutral-500">Notifications</h2>
                 <div>

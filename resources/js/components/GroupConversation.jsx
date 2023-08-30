@@ -14,7 +14,7 @@ const GroupConversationsPanel = ({ groups = [] }) => {
     );
 
     return (
-        <div className='panel'>
+        <div className='panel | box-shadow'>
             <h2 className='fw-semibold fs-500 clr-neutral-500 panel-heading'>Group Coversations</h2>
             <ul className='list' role='list'>
                 {

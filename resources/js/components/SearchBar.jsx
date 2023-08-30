@@ -135,7 +135,7 @@ const RecentSearch = ({ recent = [] , deleteFromRecentHistory}) => {
     }
 
     return (
-        <div className="recent-search">
+        <div className="recent-search | box-shadow">
             <h2 className="fw-bold clr-neutral-500">Recent</h2>
             {recent.length != 0 ?
                 <ul role="list" className="recent">

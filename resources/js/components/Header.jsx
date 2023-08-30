@@ -6,7 +6,7 @@ import Menus from "../components/Menus";
 
 const Header = ({ profile, pendingFriendsRequests }) => {
     return (
-        <header className="primary-header">
+        <header className="primary-header | box-shadow">
             <Logo></Logo>
             <SearchBar></SearchBar>
             <Menus profile={profile} pendingFriendsRequests={pendingFriendsRequests}></Menus>

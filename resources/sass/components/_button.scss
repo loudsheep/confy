@@ -29,3 +29,31 @@
     transition: 0.2s;
 
 }
+
+.span-btn {
+
+    display: inline-flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--size-200);
+
+    color: var(--clr-neutral-500);
+
+    text-align: center;
+    
+    &:hover, &:focus {
+        cursor: pointer;
+        text-decoration: underline;
+        // border-bottom: 1px var(--clr-neutral-500) solid;
+    }
+
+    .icon {
+        
+        width: var(--size-500);
+        aspect-ratio: 1 / 1;
+
+        --icon-color: var(--clr-neutral-500)
+    }
+}

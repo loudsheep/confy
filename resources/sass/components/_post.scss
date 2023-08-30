@@ -4,14 +4,14 @@
     flex-direction: column;
 
     width: min(38rem, 100%);
-    
+
     gap: var(--size-300);
     padding: var(--size-500);
     border-radius: var(--size-500);
-    
+
     background: var(--clr-neutral-100);
-    
- 
+
+
     &-header {
 
         width: 100%;
@@ -21,18 +21,18 @@
         justify-content: space-between;
 
         .profile {
-            
+
             display: inline-flex;
             align-items: center;
 
             gap: var(--size-300);
-            
+
         }
 
         .post-menu {
 
             .menu-btn {
-                
+
                 display: inline-flex;
                 justify-content: center;
                 align-items: center;
@@ -42,14 +42,17 @@
 
                 border: none;
                 background-color: var(--clr-neutral-100);
-                
+
                 border-radius: 100vw;
-                
+
+                transition: background 0.1s;
+
                 .icon {
                     --icon-color: var(--clr-neutral-500);
                 }
 
-                &:hover,&:focus {
+                &:hover,
+                &:focus {
                     background: var(--clr-neutral-200);
                 }
 
@@ -60,7 +63,7 @@
     }
 
     &-content {
-        
+
         display: flex;
         flex-direction: column;
 
@@ -77,8 +80,8 @@
                 &-slider {
                     position: relative;
 
-                    --slide-padding : var(--size-300);
-                }   
+                    --slide-padding: var(--size-300);
+                }
 
                 &-track {
                     display: flex;
@@ -90,7 +93,7 @@
                     align-items: center;
                     justify-content: center;
 
-                    & > div {
+                    &>div {
                         width: 100%;
                         height: 100%;
                     }
@@ -113,9 +116,10 @@
                     border: none;
 
                     opacity: 50%;
-                    transition: opacity 0.2s; 
+                    transition: opacity 0.2s;
 
-                    &:hover,&:focus {
+                    &:hover,
+                    &:focus {
                         opacity: 80%;
                     }
                 }
@@ -144,20 +148,20 @@
                     right: 50%;
                     bottom: var(--slide-padding);
 
-                    display: flex!important;
+                    display: flex !important;
 
                     gap: var(--slide-padding);
 
-                    & > .slick-active > button {
-                        
+                    &>.slick-active>button {
+
                         opacity: 80%;
 
                     }
 
-                    & > li > button {
+                    &>li>button {
 
                         opacity: 50%;
-                        transition: opacity 0.2s;   
+                        transition: opacity 0.2s;
 
                         background: var(--clr-neutral-100);
 
@@ -169,7 +173,7 @@
                         width: var(--size-200);
                         aspect-ratio: 1 / 1;
                     }
-                    
+
                 }
 
             }
@@ -195,7 +199,7 @@
                     height: min(38rem, 100%);
 
                     object-fit: contain;
-                
+
                     position: relative;
 
                     top: 50%;
@@ -230,7 +234,7 @@
         gap: var(--size-500);
 
         .btn {
-            
+
             .icon {
                 --icon-color: var(--clr-neutral-100)
             }
@@ -250,19 +254,23 @@
         flex-direction: column;
 
         width: 100%;
-        
+
         gap: var(--size-300);
 
         &-cta {
 
             display: flex;
-            
+
             gap: var(--size-300);
 
         }
 
+        &-more {
+            margin-block-start: var(--size-500);
+        }
+
     }
-    
+
     .comment {
 
         display: flex;
@@ -271,7 +279,39 @@
 
         justify-content: flex-start;
 
-        &-profile {
+        &-profile {}
+
+        &-menu {
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            &-btn {
+
+                opacity: 0;
+
+                width: var(--size-800);
+                aspect-ratio: 1 / 1;
+
+                transition: opacity 0.1s;
+
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+
+                width: var(--size-800);
+                aspect-ratio: 1 / 1;
+
+                border: none;
+                background-color: var(--clr-neutral-100);
+
+                border-radius: 100vw;
+
+                .icon {
+                    --icon-color: var(--clr-neutral-500);
+                }
+            }
 
         }
 
@@ -281,7 +321,14 @@
 
             gap: var(--size-200);
 
+            .content {
+                display: flex;
+
+                gap: var(--size-200);
+            }
+
             .text {
+
                 display: flex;
                 flex-direction: column;
 
@@ -289,10 +336,24 @@
 
                 padding-block: var(--size-300);
                 padding-inline: var(--size-500);
-                
+
                 border-radius: var(--size-500);
 
                 background: var(--clr-neutral-200);
+            }
+
+            &:hover {
+                .comment-menu-btn {
+
+                    opacity: 1;
+
+                    transition: background 0.1s;
+
+                    &:hover,
+                    &:focus {
+                        background: var(--clr-neutral-200);
+                    }
+                }
             }
         }
 
@@ -312,32 +373,6 @@
 
         }
 
-        span {
 
-            display: inline-flex;
-
-            justify-content: center;
-            align-items: center;
-
-            gap: var(--size-200);
-
-            color: var(--clr-neutral-500);
-
-            text-align: center;
-            
-            &:hover, &:focus {
-                cursor: pointer;
-                text-decoration: underline;
-                // border-bottom: 1px var(--clr-neutral-500) solid;
-            }
-
-            .icon {
-                
-                width: var(--size-500);
-                aspect-ratio: 1 / 1;
-
-                --icon-color: var(--clr-neutral-500)
-            }
-        }
     }
 }

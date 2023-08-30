@@ -36,7 +36,7 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
             comments: [
                 {
                     profile: "",
-                    text: "Lorem ipsum dolor sit amet.",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet tellus lectus, non venenatis massa iaculis ac. Maecenas ac tempus.",
                     likes: 45,
                     time: "2023-03-28T18:28:58Z",
                     replies: [

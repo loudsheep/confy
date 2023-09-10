@@ -47,7 +47,7 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
                             time: "2023-04-10T17:36:10Z",
                             replies: [
                                 {
-                                    profile: profile,
+                                    profile: friends[3],
                                     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
                                     likes: 17,
                                     time: "2023-04-27T02:18:45Z",

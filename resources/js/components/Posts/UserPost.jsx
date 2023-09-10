@@ -36,7 +36,7 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
     const commentInp = useRef(null);
     const commentInpFocused = useRef(null);
     const focusComment = () => {
-        if(focused) {
+        if (focused) {
             commentInpFocused.current.focus();
         } else {
             commentInp.current.focus();
@@ -73,9 +73,9 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                 <div className='fp-content'>
                     <header className='fp-header'>
                         <div className="profile">
-                            <img src="https://i.pravatar.cc/300" alt="" className="profile-picture" />
+                            <img src={profile.profile.profile_image} alt={profile.name} className="profile-picture" />
                             <div>
-                                <p className="fw-medium fs-500">Mya Wynn</p>
+                                <p className="fw-medium fs-500">{`${profile.profile.first_name} ${profile.profile.last_name}`}</p>
                                 <time className="fs-300 fw-light" dateTime={postTime}>{time.toDateString()}</time>
                             </div>
                         </div>
@@ -104,11 +104,11 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                     </div>
                     <div className='fp-comments'>
                         {comments.map((c) => <Comment
-                        profile={c.profile}
-                        content={c.text}
-                        time={c.time}
-                        likes={c.likes}
-                        replies={c.replies}
+                            profile={c.profile}
+                            content={c.text}
+                            time={c.time}
+                            likes={c.likes}
+                            replies={c.replies}
                         ></Comment>)}
                     </div>
                     <form className="fp-comments-cta">
@@ -130,9 +130,9 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
         <article className="post | box-shadow">
             <header className="post-header">
                 <div className="profile">
-                    <img src="https://i.pravatar.cc/300" alt="" className="profile-picture" />
+                    <img src={profile.profile.profile_image} alt={profile.name} className="profile-picture" />
                     <div>
-                        <p className="fw-medium fs-500">Mya Wynn</p>
+                        <p className="fw-medium fs-500">{`${profile.profile.first_name} ${profile.profile.last_name}`}</p>
                         <time className="fs-300 fw-light" dateTime={postTime}>{time.toDateString()}</time>
                     </div>
                 </div>
@@ -183,11 +183,11 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                 {
                     comments.length != 0 ? (
                         <Comment
-                        profile={comments[0].profile}
-                        content={comments[0].text}
-                        time={comments[0].time}
-                        likes={comments[0].likes}
-                        replies={comments[0].replies}
+                            profile={comments[0].profile}
+                            content={comments[0].text}
+                            time={comments[0].time}
+                            likes={comments[0].likes}
+                            replies={comments[0].replies}
                         ></Comment>
                     ) : ""
                 }

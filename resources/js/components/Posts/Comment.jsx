@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Icon from '../Icon';
 
 const Comment = ({ profile, content, time, likes, replies }) => {
+
+    const [expanded, setExpanded] = useState(false);
+
     return (
         <div className='comment'>
             <div className="comment-profile">
                 <img src={profile.profile.profile_image} alt={profile.name} className="profile-picture" />
+                <div className='comment-line'></div>
             </div>
             <div className="comment-content">
                 <div className="content">
@@ -36,9 +40,18 @@ const Comment = ({ profile, content, time, likes, replies }) => {
                 {
                     replies.length > 0 ? (
                         <div className="comment-replies">
-                            <span className="fs-400 fw-semibold | span-btn" onClick={() => console.log("Expand Replies")}>
-                                View {replies.length} {replies.length == 1 ? "reply" : "replies"}
-                            </span>
+                            {!expanded &&
+                                <span className="fs-400 fw-semibold | span-btn" onClick={() => setExpanded(true)}>
+                                    View {replies.length} {replies.length == 1 ? "reply" : "replies"}
+                                </span>
+                            }
+                            {expanded && replies.map((r) => <Comment
+                                profile={r.profile}
+                                content={r.text}
+                                time={r.time}
+                                likes={r.likes}
+                                replies={r.replies}
+                            ></Comment>)}
                         </div>
                     ) : ""
                 }

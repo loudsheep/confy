@@ -3,6 +3,7 @@ import Slider from "react-slick";
 
 import Icon from '../Icon';
 import EmojiPicker from '../EmojiPicker';
+import Comment from './Comment';
 
 // - profile -> user that created post
 // - postTime -> time when post was created
@@ -15,14 +16,13 @@ import EmojiPicker from '../EmojiPicker';
 
 const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
 
-
     const sliderSettings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1
-    }
+    };
 
     let time = new Date(postTime);
 
@@ -31,28 +31,100 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
             <img className="media-image-bg" src={m} />
             <img className="media-image" src={m} />
         </div>
-    )
+    );
 
     const commentInp = useRef(null);
+    const commentInpFocused = useRef(null);
     const focusComment = () => {
-        commentInp.current.focus();
+        if(focused) {
+            commentInpFocused.current.focus();
+        } else {
+            commentInp.current.focus();
+        }
     }
 
     const addEmoji = (emoji) => {
-        commentInp.current.focus();
-        let pointer = commentInp.current.selectionStart;
-        let value = commentInp.current.value;
+
+        let input = focused ? commentInpFocused : commentInp;
+
+        input.current.focus();
+        let pointer = input.current.selectionStart;
+        let value = input.current.value;
 
         let out = value.slice(0, pointer) + emoji.native + value.slice(pointer);
-        
-        commentInp.current.value = out;
-    };
 
+        input.current.value = out;
+    };
 
     const [focused, setFocused] = useState(false);
-    const focusPost = () => {
-        setFocused(true);
-    };
+
+    const focusedPost = (
+        <div className='post-focused | modal' onClick={(e) => {
+            if (e.target.classList.contains("post-focused")) {
+                setFocused(false);
+            }
+        }}>
+            <div className="post-focused-body | modal-body box-shadow">
+                <div className='fp-media'>
+                    <Slider {...sliderSettings}>
+                        {media}
+                    </Slider>
+                </div>
+                <div className='fp-content'>
+                    <header className='fp-header'>
+                        <div className="profile">
+                            <img src="https://i.pravatar.cc/300" alt="" className="profile-picture" />
+                            <div>
+                                <p className="fw-medium fs-500">Mya Wynn</p>
+                                <time className="fs-300 fw-light" dateTime={postTime}>{time.toDateString()}</time>
+                            </div>
+                        </div>
+                        <div className="post-menu">
+                            <button className="menu-btn" onClick={() => setFocused(false)}>
+                                <Icon name="Close_round"></Icon>
+                            </button>
+                        </div>
+                    </header>
+                    <div>
+                        <p className="fs-500 fw-light">{content.text}</p>
+                    </div>
+                    <div className='fp-content-cta'>
+                        <button className="btn">
+                            <Icon name="Favorite"></Icon>
+                            <p className="text">{likes != 0 ? likes : "Like"}</p>
+                        </button>
+                        <button className="btn" onClick={() => focusComment()}>
+                            <Icon name="Comment"></Icon>
+                            <p className="text">Comment</p>
+                        </button>
+                        <button className="btn">
+                            <Icon name="Send"></Icon>
+                            <p className="text">Share</p>
+                        </button>
+                    </div>
+                    <div className='fp-comments'>
+                        {comments.map((c) => <Comment
+                        profile={c.profile}
+                        content={c.text}
+                        time={c.time}
+                        likes={c.likes}
+                        replies={c.replies}
+                        ></Comment>)}
+                    </div>
+                    <form className="fp-comments-cta">
+                        <img src={user.profile_image} alt={`${user.first_name} ${user.last_name}`} className="profile-picture" />
+                        <div className="input">
+                            <input ref={commentInpFocused} id="comment-input" type="text" autoComplete="off" placeholder="Write a comment..." />
+                            <EmojiPicker onEmojiSelect={(emoji) => addEmoji(emoji)}></EmojiPicker>
+                            <button className="input-btn" type="submit">
+                                <Icon name="Send_hor"></Icon>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <article className="post | box-shadow">
@@ -77,13 +149,13 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                 <div className="post-text">
                     <p className="fs-500 fw-light">{content.text}</p>
                 </div>
-                <div className="post-media">
+                <div className="post-media" onDoubleClick={() => setFocused(true)}>
                     <Slider {...sliderSettings}>
                         {media}
                     </Slider>
                 </div>
             </section>
-            <div className="post-cta">
+            <section className="post-cta">
                 <button className="btn">
                     <Icon name="Favorite"></Icon>
                     <p className="text">{likes != 0 ? likes : "Like"}</p>
@@ -96,7 +168,7 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                     <Icon name="Send"></Icon>
                     <p className="text">Share</p>
                 </button>
-            </div>
+            </section>
             <section className="post-comments">
                 <form className="post-comments-cta">
                     <img src={user.profile_image} alt={`${user.first_name} ${user.last_name}`} className="profile-picture" />
@@ -110,58 +182,22 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                 </form>
                 {
                     comments.length != 0 ? (
-                        <div className="comment">
-                            <div className="comment-profile">
-                                <img src="https://i.pravatar.cc/300" alt="" className="profile-picture" />
-                            </div>
-                            <div className="comment-content">
-                                <div className="content">
-                                    <div className="text">
-                                        <p className="fs-400 fw-semibold">Alex Butler</p>
-                                        <div className="comment-text">
-                                            <p className="fs-500 fw-light">{comments[0].text}</p>
-                                        </div>
-                                    </div>
-                                    <div className="comment-menu">
-                                        <button className="comment-menu-btn" onClick={()=>console.log("moai 🗿")}>
-                                            <Icon name="Meatballs_menu"></Icon>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div className="comment-cta">
-                                    <span className="fs-400 fw-semibold | span-btn">
-                                        <Icon name="Favorite"></Icon>
-                                        {comments[0].likes}
-                                    </span>
-                                    <span className="fs-400 fw-semibold | span-btn">
-                                        <Icon name="Chat_plus"></Icon>
-                                        Reply
-                                    </span>
-                                    <time className="fs-400 fw-light" dateTime={comments[0].time}>{new Date(comments[0].time).toDateString()}</time>
-                                </div>
-                                {
-                                    comments[0].replies.length > 0 ? (
-                                        <div className="comment-replies">
-                                            <span className="fs-400 fw-semibold | span-btn" onClick={() => focusPost()}>
-                                                View {comments[0].replies.length} {comments[0].replies.length == 1 ? "reply" : "replies"}
-                                            </span>
-                                        </div>
-                                    ) : ""
-                                }
-                            </div>
-                        </div>
+                        <Comment
+                        profile={comments[0].profile}
+                        content={comments[0].text}
+                        time={comments[0].time}
+                        likes={comments[0].likes}
+                        replies={comments[0].replies}
+                        ></Comment>
                     ) : ""
                 }
                 <div className="post-comments-more">
-                    <span className="fs-500 fw-semibold | span-btn" onClick={() => focusPost()}>See more comments</span>
+                    <span className="fs-500 fw-semibold | span-btn" onClick={() => setFocused(true)}>See more comments</span>
                 </div>
             </section>
+            {focused && focusedPost}
         </article>
     );
-}
-
-const FocusedPost = ({post}) => {
-
 }
 
 export default UserPost;

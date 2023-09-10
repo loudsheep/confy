@@ -22,32 +22,32 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
 
     let posts = [
         {
-            profile: "",
+            profile: friends[0],
             postTime: "2023-02-03T22:41:34Z",
             content: {
                 text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro fugit veritatis quo architecto? Minus, qui velit quibusdam ducimus neque voluptas quis nostrum dolores repudiandae. Sint error ex quos eius explicabo?",
                 media: [
-                    "https://picsum.photos/600/800",
-                    "https://picsum.photos/800/1000",
-                    "https://picsum.photos/900/600",
+                    "https://picsum.photos/1024/1680",
+                    "https://picsum.photos/1080/1920",
+                    "https://picsum.photos/1920/1680",
                 ]
             },
             likes: 413,
             comments: [
                 {
-                    profile: "",
+                    profile: friends[1],
                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet tellus lectus, non venenatis massa iaculis ac. Maecenas ac tempus.",
                     likes: 45,
                     time: "2023-03-28T18:28:58Z",
                     replies: [
                         {
-                            profile: "",
+                            profile: friends[2],
                             text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
                             likes: 12,
                             time: "2023-04-10T17:36:10Z",
                             replies: [
                                 {
-                                    profile: "",
+                                    profile: profile,
                                     text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
                                     likes: 17,
                                     time: "2023-04-27T02:18:45Z",

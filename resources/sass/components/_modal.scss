@@ -1,0 +1,22 @@
+.modal {
+    z-index: 10;
+
+    position: fixed;
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background: var(--clr-other-modal-backdrop);
+
+    animation: modal-show 0.2s;
+    
+    padding-inline: var(--offset-x, var(--size-500));
+    padding-block: var(--offset-y, var(--size-500));
+
+}
+
+@keyframes modal-show {
+    from {opacity: 0;}
+    to {opacity: 100;}
+}

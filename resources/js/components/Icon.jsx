@@ -7,10 +7,10 @@ svg4everybody({
     polyfill: true // polyfill <use> elements for External Content
 });
 
-const Icon = (props) => {
+const Icon = ({name}) => {
     return (
         <svg role="img" className="icon">
-            <use xlinkHref={icons + "#" + props.name}></use>
+            <use xlinkHref={icons + "#" + name}></use>
         </svg>
     );
 }

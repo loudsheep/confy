@@ -30,10 +30,79 @@ const Home = ({ auth, profile, friends, pendingFriendsRequests }) => {
                     "https://picsum.photos/1024/1680",
                     "https://picsum.photos/1080/1920",
                     "https://picsum.photos/1920/1680",
+                    "https://picsum.photos/1620/1580",
                 ]
             },
             likes: 413,
             comments: [
+                {
+                    profile: friends[1],
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet tellus lectus, non venenatis massa iaculis ac. Maecenas ac tempus.",
+                    likes: 45,
+                    time: "2023-03-28T18:28:58Z",
+                    replies: [
+                        {
+                            profile: friends[2],
+                            text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                            likes: 12,
+                            time: "2023-04-10T17:36:10Z",
+                            replies: [
+                                {
+                                    profile: friends[3],
+                                    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                                    likes: 17,
+                                    time: "2023-04-27T02:18:45Z",
+                                    replies: [
+
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            profile: friends[3],
+                            text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                            likes: 17,
+                            time: "2023-04-27T02:18:45Z",
+                            replies: [
+
+                            ]
+                        }
+                    ]
+                },
+                {
+                    profile: friends[1],
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet tellus lectus, non venenatis massa iaculis ac. Maecenas ac tempus.",
+                    likes: 45,
+                    time: "2023-03-28T18:28:58Z",
+                    replies: [
+                        {
+                            profile: friends[2],
+                            text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                            likes: 12,
+                            time: "2023-04-10T17:36:10Z",
+                            replies: [
+                                {
+                                    profile: friends[3],
+                                    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                                    likes: 17,
+                                    time: "2023-04-27T02:18:45Z",
+                                    replies: [
+
+                                    ]
+                                },
+                                {
+                                    profile: friends[3],
+                                    text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+                                    likes: 17,
+                                    time: "2023-04-27T02:18:45Z",
+                                    replies: [
+
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
                 {
                     profile: friends[1],
                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer aliquet tellus lectus, non venenatis massa iaculis ac. Maecenas ac tempus.",

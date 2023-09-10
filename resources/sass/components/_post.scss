@@ -286,14 +286,14 @@
         &-profile {
             display: flex;
             flex-direction: column;
-            
+
             align-items: center;
 
             gap: var(--size-300);
         }
 
         &-line {
-            
+
             width: 1px;
             height: 100%;
 
@@ -348,11 +348,11 @@
 
                 &:hover {
                     .comment-menu-btn {
-    
+
                         opacity: 1;
-    
+
                         transition: background 0.1s;
-    
+
                         &:hover,
                         &:focus {
                             background: var(--clr-neutral-200);
@@ -441,46 +441,46 @@
                     .media {
 
                         &-wrapper {
-        
+
                             height: 100%;
                             aspect-ratio: 1 / 1;
-        
+
                             position: relative;
-        
+
                             overflow: hidden;
-        
+
                             // border-radius: var(--size-500);
                             margin-block: auto;
                         }
-        
+
                         &-image {
-        
+
                             width: 100%;
                             height: 100%;
-        
+
                             object-fit: contain;
-        
+
                             position: relative;
-        
+
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-        
+
                             &-bg {
-        
+
                                 height: 110%;
                                 width: 110%;
-        
+
                                 position: absolute;
                                 inset: 0;
-        
+
                                 filter: blur(10px);
-                                
+
                                 scale: 1.2;
-        
+
                             }
                         }
-        
+
                     }
 
                     .slick {
@@ -620,8 +620,9 @@
 
                             }
 
-                            &:hover, &:focus {
-                                
+                            &:hover,
+                            &:focus {
+
                                 background: var(--clr-primary-500);
 
                                 .icon {
@@ -657,6 +658,8 @@
 
                             flex: 1;
 
+                            gap: var(--size-300);
+
                             .icon {
                                 --icon-color: var(--clr-neutral-100);
                             }
@@ -668,8 +671,12 @@
                 &-comments {
 
                     display: flex;
+                    flex-direction: column;
 
                     flex: 1;
+                    gap: var(--size-400);
+
+                    overflow-y: auto;
 
                     &-cta {
                         display: flex;
@@ -682,5 +689,32 @@
             }
 
         }
+    }
+}
+
+.like-btn[liked="1"] {
+
+    .icon {
+        animation-name: like;
+        animation-duration: 0.5s;
+    }
+
+}
+
+@keyframes like {
+    0% {
+        scale: 100%;
+    }
+
+    20% {
+        scale: 80%;
+    }
+
+    60% {
+        scale: 120%;
+    }
+
+    100% {
+        scale: 100%;
     }
 }

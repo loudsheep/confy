@@ -58,6 +58,8 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
 
     const [focused, setFocused] = useState(false);
 
+    const [liked, setLiked] = useState(0);
+
     const focusedPost = (
         <div className='post-focused | modal' onClick={(e) => {
             if (e.target.classList.contains("post-focused")) {
@@ -89,15 +91,22 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                         <p className="fs-500 fw-light">{content.text}</p>
                     </div>
                     <div className='fp-content-cta'>
-                        <button className="btn">
-                            <Icon name="Favorite"></Icon>
+                        <button className="btn | like-btn" onClick={() => {
+                            if (liked == 0) {
+                                setLiked(1);
+                            } else {
+                                setLiked(0);
+                            }
+                        }} liked={liked}>
+                            {liked == 0 && <Icon name="Favorite"></Icon>}
+                            {liked == 1 && <Icon name="Favorite_fill"></Icon>}
                             <p className="text">{likes != 0 ? likes : "Like"}</p>
                         </button>
-                        <button className="btn" onClick={() => focusComment()}>
+                        <button className="btn | comment-btn" onClick={() => focusComment()}>
                             <Icon name="Comment"></Icon>
                             <p className="text">Comment</p>
                         </button>
-                        <button className="btn">
+                        <button className="btn | share-btn">
                             <Icon name="Send"></Icon>
                             <p className="text">Share</p>
                         </button>
@@ -156,15 +165,22 @@ const UserPost = ({ user, profile, postTime, content, likes, comments }) => {
                 </div>
             </section>
             <section className="post-cta">
-                <button className="btn">
-                    <Icon name="Favorite"></Icon>
+                <button className="btn | like-btn" onClick={() => {
+                    if (liked == 0) {
+                        setLiked(1);
+                    } else {
+                        setLiked(0);
+                    }
+                }} liked={liked}>
+                    {liked == 0 && <Icon name="Favorite"></Icon>}
+                    {liked == 1 && <Icon name="Favorite_fill"></Icon>}
                     <p className="text">{likes != 0 ? likes : "Like"}</p>
                 </button>
-                <button className="btn" onClick={() => focusComment()}>
+                <button className="btn | comment-btn" onClick={() => focusComment()}>
                     <Icon name="Comment"></Icon>
                     <p className="text">Comment</p>
                 </button>
-                <button className="btn">
+                <button className="btn | share-btn">
                     <Icon name="Send"></Icon>
                     <p className="text">Share</p>
                 </button>
